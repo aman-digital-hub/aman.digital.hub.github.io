@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Aman Digital Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a1f44;
+            --primary-dark: #061530;
+            --secondary: #1a3a6e;
+            --accent: #c9a227;
+            --accent-light: #e8c547;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --light: #f0f4fa;
+            --sidebar: #0a1f44;
+            --text: #1a1a2e;
+            --text-light: #5a6a85;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --gold-gradient: linear-gradient(90deg, #c9a227, #e8c547, #c9a227);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ===== LOGIN PAGE ===== */
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a1f44 0%, #1a3a6e 50%, #0a1f44 100%);
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-page::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201,162,39,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .login-box {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-logo .icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gold-gradient);
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            box-shadow: 0 8px 20px rgba(201,162,39,0.4);
+        }
+
+        .login-logo h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .login-logo p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #e0e6f0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: var(--light);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(201,162,39,0.15);
+            background: var(--white);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold-gradient);
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(201,162,39,0.35);
+            margin-top: 8px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201,162,39,0.5);
+        }
+
+        .login-error {
+            background: #fef2f2;
+            color: var(--danger);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            margin-bottom: 16px;
+            display: none;
+            border: 1px solid #fecaca;
+        }
+
+        .login-hint {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 12px;
+            color: var(--text-light);
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .login-hint strong {
+            color: var(--primary);
+        }
+
+        /* ===== ADMIN LAYOUT ===== */
+        .admin-layout {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .admin-layout.active {
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--sidebar);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-header .icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gold-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .sidebar-header h2 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .sidebar-header span {
+            font-size: 11px;
+            color: var(--accent-light);
+            display: block;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 20px 12px;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            width: 100%;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.08);
+            color: var(--white);
+        }
+
+        .nav-item.active {
+            background: rgba(201,162,39,0.2);
+            color: var(--accent-light);
+        }
+
+        .nav-item svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer {
+            padding: 16px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(239,68,68,0.15);
+            color: #fca5a5;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239,68,68,0.25);
+        }
+
+        .logout-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: var(--white);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e5e9f2;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .topbar h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .admin-avatar {
+            width: 38px;
+            height: 38px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        .content-area {
+            padding: 32px;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(10,31,68,0.05);
+            border: 1px solid #eef1f6;
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-card .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .stat-card .stat-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .stat-card .stat-icon.blue { background: linear-gradient(135deg, #0a1f44, #1a3a6e); }
+        .stat-card .stat-icon.gold { background: var(--gold-gradient); }
+        .stat-card .stat-icon.green { background: linear-gradient(135deg, #059669, #10b981); }
+        .stat-card .stat-icon.purple { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+
+        .stat-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-card p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(10,31,68,0.05);
+            border: 1px solid #eef1f6;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #eef1f6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        /* Table */
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--light);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid #f0f2f7;
+            color: var(--text);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #fafbfd;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-new {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .badge-read {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .btn-sm {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-view {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .btn-view:hover { background: #c7d2fe; }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .btn-delete:hover { background: #fecaca; }
+
+        .btn-edit {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .btn-edit:hover { background: #fde68a; }
+
+        /* Form in admin */
+        .admin-form .form-group {
+            margin-bottom: 18px;
+        }
+
+        .admin-form label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .admin-form input,
+        .admin-form textarea,
+        .admin-form select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #e0e6f0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            background: var(--light);
+            transition: all 0.3s;
+        }
+
+        .admin-form input:focus,
+        .admin-form textarea:focus,
+        .admin-form select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201,162,39,0.15);
+            background: var(--white);
+        }
+
+        .admin-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 15px rgba(201,162,39,0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201,162,39,0.45);
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary);
+            padding: 12px 28px;
+            border: 1.5px solid #e0e6f0;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e9f2;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--text-light);
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            fill: #cbd5e1;
+            margin-bottom: 16px;
+        }
+
+        .empty-state p {
+            font-size: 15px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10,31,68,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #eef1f6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--text-light);
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #eef1f6;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .message-detail p {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .message-detail strong {
+            color: var(--primary);
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        .message-detail .msg-body {
+            background: var(--light);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+            line-height: 1.7;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .content-area {
+                padding: 20px 16px;
+            }
+            .topbar {
+                padding: 14px 16px;
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 99;
+            display: none;
+        }
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN PAGE -->
+    <div class="login-page" id="loginPage">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="images/logo.png" alt="Aman Digital Hub" style="width:80px;height:80px;border-radius:50%;object-fit:cover;background:#fff;border:3px solid #c9a227;margin-bottom:14px;">
+                <h1>Aman Digital Hub</h1>
+                <p>Admin Panel Login</p>
+            </div>
+            <div class="login-error" id="loginError">Invalid username or password</div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="login-btn">Login to Dashboard</button>
+            </form>
+            <div class="login-hint">
+                <strong>Login:</strong><br>
+                Username: <strong>admin</strong><br>
+                Password: <strong>admin123</strong><br><br>
+                <button type="button" onclick="openOtpReset()" style="margin-top:8px;padding:8px 14px;border:none;border-radius:8px;background:#0a1f44;color:#e8c547;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;">Forgot / Reset Password (Free PIN)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FREE PASSWORD RESET — Recovery PIN (no SMS/API) -->
+    <div id="otpModal" style="display:none;position:fixed;inset:0;background:rgba(6,21,48,0.75);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+        <div style="background:#fff;border-radius:20px;padding:28px 24px;max-width:400px;width:100%;box-shadow:0 25px 50px rgba(0,0,0,0.3);">
+            <h3 style="margin:0 0 8px;color:#0a1f44;font-size:18px;">Reset Password (Free)</h3>
+            <p style="margin:0 0 16px;font-size:13px;color:#5a6a85;line-height:1.5;">Koi SMS/API nahi. Settings mein set kiya hua <strong>Recovery PIN</strong> daalo.</p>
+            <div class="form-group" style="margin-bottom:12px;">
+                <label style="font-size:13px;font-weight:500;color:#0a1f44;display:block;margin-bottom:6px;">Recovery PIN</label>
+                <input type="password" id="recoveryPinInput" placeholder="PIN daalo" maxlength="8" style="width:100%;padding:12px;border:1.5px solid #e0e6f0;border-radius:10px;font-size:16px;box-sizing:border-box;font-family:inherit;">
+            </div>
+            <button type="button" onclick="verifyPinAndReset()" style="width:100%;padding:14px;border:none;border-radius:50px;background:linear-gradient(90deg,#c9a227,#e8c547);color:#0a1f44;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;">Verify PIN & Reset</button>
+            <p id="otpMsg" style="font-size:13px;margin:12px 0 0;text-align:center;min-height:20px;"></p>
+            <p style="font-size:11px;color:#94a3b8;margin-top:12px;text-align:center;">Default PIN: <strong>7860</strong> (Settings se change kar sakte ho)</p>
+            <button type="button" onclick="closeOtpModal()" style="width:100%;margin-top:8px;padding:10px;border:none;background:none;color:#94a3b8;font-size:13px;cursor:pointer;font-family:inherit;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- ADMIN LAYOUT -->
+    <div class="admin-layout" id="adminLayout">
+        <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="ADH" style="width:42px;height:42px;border-radius:50%;object-fit:cover;background:#fff;border:2px solid #c9a227;flex-shrink:0;">
+                <div>
+                    <h2>Aman Digital Hub</h2>
+                    <span>Admin Panel</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
+                    <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                    Dashboard
+                </button>
+                <button class="nav-item" data-page="inquiries" onclick="showPage('inquiries')">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Inquiries
+                    <span id="inquiryBadge" style="margin-left:auto;background:#ef4444;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;display:none;"></span>
+                </button>
+                <button class="nav-item" data-page="chats" onclick="showPage('chats')">
+                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+                    AI Chats
+                    <span id="chatBadgeAdmin" style="margin-left:auto;background:#ef4444;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;display:none;"></span>
+                </button>
+                <button class="nav-item" data-page="services" onclick="showPage('services')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/></svg>
+                    Services
+                </button>
+                <button class="nav-item" data-page="clients" onclick="showPage('clients')">
+                    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    Clients
+                </button>
+                <button class="nav-item" data-page="contact" onclick="showPage('contact')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Contact Info
+                </button>
+                <button class="nav-item" data-page="settings" onclick="showPage('settings')">
+                    <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                    Settings
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="handleLogout()">
+                    <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="main-content">
+            <div class="topbar">
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <button class="menu-toggle" onclick="toggleSidebar()">
+                        <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                    </button>
+                    <h1 id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="admin-user">
+                        <div class="admin-avatar">MA</div>
+                        <span>Md Aman</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">
+
+                <!-- DASHBOARD PAGE -->
+                <div class="page active" id="page-dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <h3 id="statInquiries">0</h3>
+                            <p>Total Inquiries</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon gold">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <h3 id="statNew">0</h3>
+                            <p>New Messages</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8z"/></svg>
+                            </div>
+                            <h3 id="statServices">3</h3>
+                            <p>Active Services</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            </div>
+                            <h3>1</h3>
+                            <p>Admin Users</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Inquiries</h3>
+                            <button class="btn-sm btn-view" onclick="showPage('inquiries')">View All</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Service</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentInquiries">
+                                        <tr><td colspan="4" style="text-align:center;color:#94a3b8;">No inquiries yet</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INQUIRIES PAGE -->
+                <div class="page" id="page-inquiries">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>All Inquiries</h3>
+                            <button class="btn-sm btn-delete" onclick="clearAllInquiries()">Clear All</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Service</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="inquiriesTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="empty-state" id="inquiriesEmpty" style="display:none;">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                <p>No inquiries received yet.<br>Messages from the website contact form will appear here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI CHATS PAGE -->
+                <div class="page" id="page-chats">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>AI Chat Conversations</h3>
+                            <button class="btn-sm btn-delete" onclick="clearAllChats()">Clear All</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Chat ID</th>
+                                            <th>Messages</th>
+                                            <th>Started</th>
+                                            <th>Last Activity</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="chatsTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="empty-state" id="chatsEmpty" style="display:none;">
+                                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+                                <p>No AI chat conversations yet.<br>When customers chat with the AI Assistant on the website, conversations will appear here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SERVICES PAGE -->
+                <div class="page" id="page-services">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Manage Services</h3>
+                            <button class="btn-primary" onclick="openServiceModal()">+ Add Service</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Service Name</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="servicesTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTACT INFO PAGE -->
+                <div class="page" id="page-contact">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Contact Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="admin-form" id="contactForm" onsubmit="saveContactInfo(event)">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="contactPhone" value="+91 7543811796">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="email" id="contactEmail" value="ansarimadaman22@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" id="contactLocation" value="Working Remotely – India">
+                                </div>
+                                <div class="form-group">
+                                    <label>Founder Name</label>
+                                    <input type="text" id="contactName" value="Md Aman">
+                                </div>
+                                <div class="form-group">
+                                    <label>Designation</label>
+                                    <input type="text" id="contactRole" value="Founder & Web/App Developer">
+                                </div>
+                                <button type="submit" class="btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS PAGE -->
+                <div class="page" id="page-clients">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Clients (Name, Photo, Location)</h3>
+                            <button class="btn-sm btn-view" onclick="document.getElementById('clientFormCard').style.display='block'">+ Add Client</button>
+                        </div>
+                        <div class="card-body">
+                            <div id="clientFormCard" style="display:none;background:#f5f8ff;padding:20px;border-radius:12px;margin-bottom:20px;border:1px solid #e0e6f0;">
+                                <h4 style="margin:0 0 14px;color:#0a1f44;">Add / Edit Client</h4>
+                                <input type="hidden" id="clientEditId">
+                                <div class="form-group">
+                                    <label>Client Name *</label>
+                                    <input type="text" id="clientName" placeholder="e.g. Rahul Kapoor">
+                                </div>
+                                <div class="form-group">
+                                    <label>Location / City *</label>
+                                    <input type="text" id="clientLocation" placeholder="e.g. Delhi">
+                                </div>
+                                <div class="form-group">
+                                    <label>Project / Business</label>
+                                    <input type="text" id="clientProject" placeholder="e.g. Website, Mobile App">
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo</label>
+                                    <input type="file" id="clientPhoto" accept="image/*" onchange="previewClientPhoto(event)">
+                                    <img id="clientPhotoPreview" style="display:none;width:80px;height:80px;border-radius:50%;object-fit:cover;margin-top:10px;border:2px solid #c9a227;">
+                                </div>
+                                <div class="form-group">
+                                    <label>Review / Feedback (optional)</label>
+                                    <textarea id="clientReview" rows="2" placeholder="Client ka short review"></textarea>
+                                </div>
+                                <div style="display:flex;gap:10px;">
+                                    <button type="button" class="btn-primary" onclick="saveClient()">Save Client</button>
+                                    <button type="button" class="btn-sm" onclick="cancelClientForm()" style="padding:10px 16px;">Cancel</button>
+                                </div>
+                            </div>
+                            <div id="clientsList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page" id="page-settings">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>UPI Payment Settings</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size:13px;color:var(--text-light);margin-bottom:14px;">Jab customer Pay dabaye, payment is UPI ID pe aayegi (Google Pay / PhonePe / Paytm).</p>
+                            <div class="form-group">
+                                <label>Your UPI ID *</label>
+                                <input type="text" id="settingsUpiId" placeholder="e.g. 7543811796@paytm or name@ybl">
+                            </div>
+                            <div class="form-group">
+                                <label>Name on UPI</label>
+                                <input type="text" id="settingsUpiName" placeholder="Aman Digital Hub" value="Aman Digital Hub">
+                            </div>
+                            <button type="button" class="btn-primary" onclick="saveUpiSettings()">Save UPI Settings</button>
+                            <p id="upiSaveMsg" style="margin-top:10px;font-size:13px;"></p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top:24px;">
+                        <div class="card-header">
+                            <h3>Admin Login Settings</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="admin-form" id="settingsForm" onsubmit="saveSettings(event)">
+                                <div class="form-group">
+                                    <label>Admin Username</label>
+                                    <input type="text" id="settingsUsername" value="admin">
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" id="settingsPassword" placeholder="Leave blank to keep current">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password</label>
+                                    <input type="password" id="settingsPassword2" placeholder="Confirm new password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Recovery PIN (password reset ke liye — bilkul free)</label>
+                                    <input type="text" id="settingsRecoveryPin" placeholder="e.g. 7860" maxlength="8">
+                                    <small style="color:var(--text-light);font-size:12px;">Forgot password pe yeh PIN maanga jayega. Koi SMS/API nahi.</small>
+                                </div>
+                                <button type="submit" class="btn-primary">Update Settings</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top:24px;">
+                        <div class="card-header">
+                            <h3>Website Link</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="margin-bottom:16px;color:var(--text-light);font-size:14px;">Open the public website in a new tab:</p>
+                            <a href="index.html" target="_blank" class="btn-primary" style="display:inline-flex;text-decoration:none;">
+                                Open Website →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- View Message Modal -->
+    <div class="modal-overlay" id="messageModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Inquiry Details</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="message-detail" id="messageDetail"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn-sm btn-delete" id="modalDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Chat Modal -->
+    <div class="modal-overlay" id="chatModal">
+        <div class="modal" style="max-width:640px;">
+            <div class="modal-header">
+                <h3>Chat Conversation</h3>
+                <button class="modal-close" onclick="closeChatModal()">&times;</button>
+            </div>
+            <div class="modal-body" style="padding:0;">
+                <div id="chatDetail" style="max-height:450px;overflow-y:auto;padding:20px;background:#f5f8ff;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeChatModal()">Close</button>
+                <button class="btn-sm btn-delete" id="chatModalDeleteBtn">Delete Chat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Modal -->
+    <div class="modal-overlay" id="serviceModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="serviceModalTitle">Add Service</h3>
+                <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="admin-form" id="serviceForm" onsubmit="saveService(event)">
+                    <input type="hidden" id="serviceId">
+                    <div class="form-group">
+                        <label>Service Name</label>
+                        <input type="text" id="serviceName" required placeholder="e.g. Website Development">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="serviceDesc" required placeholder="Short description of the service"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="serviceStatus">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeServiceModal()">Cancel</button>
+                <button class="btn-primary" onclick="document.getElementById('serviceForm').requestSubmit()">Save Service</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ===== AUTH =====
+        const DEFAULT_USER = { username: 'admin', password: 'admin123' };
+
+        function getCredentials() {
+            try {
+                const saved = localStorage.getItem('adh_admin_creds');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && parsed.username && parsed.password) return parsed;
+                }
+            } catch (e) {}
+            return DEFAULT_USER;
+        }
+
+        function isLoggedIn() {
+            return sessionStorage.getItem('adh_logged_in') === 'true';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const creds = getCredentials();
+            const err = document.getElementById('loginError');
+
+            // Match saved credentials OR default admin/admin123
+            const ok =
+                (username === creds.username && password === creds.password) ||
+                (username === DEFAULT_USER.username && password === DEFAULT_USER.password);
+
+            if (ok) {
+                // If logged in with default, reset saved creds to default (fixes old password)
+                if (username === DEFAULT_USER.username && password === DEFAULT_USER.password) {
+                    localStorage.setItem('adh_admin_creds', JSON.stringify(DEFAULT_USER));
+                }
+                sessionStorage.setItem('adh_logged_in', 'true');
+                err.style.display = 'none';
+                showAdmin();
+            } else {
+                err.textContent = 'Invalid username or password. Try admin / admin123';
+                err.style.display = 'block';
+            }
+        }
+
+        // ===== FREE PASSWORD RESET (Recovery PIN — no SMS) =====
+        const DEFAULT_RECOVERY_PIN = '7860';
+
+        function getRecoveryPin() {
+            return localStorage.getItem('adh_recovery_pin') || DEFAULT_RECOVERY_PIN;
+        }
+
+        function openOtpReset() {
+            document.getElementById('otpModal').style.display = 'flex';
+            document.getElementById('recoveryPinInput').value = '';
+            document.getElementById('otpMsg').textContent = '';
+        }
+
+        function closeOtpModal() {
+            document.getElementById('otpModal').style.display = 'none';
+        }
+
+        function verifyPinAndReset() {
+            const entered = document.getElementById('recoveryPinInput').value.trim();
+            const msg = document.getElementById('otpMsg');
+            if (!entered) {
+                msg.style.color = '#ef4444';
+                msg.textContent = 'Recovery PIN daalo.';
+                return;
+            }
+            if (entered !== getRecoveryPin()) {
+                msg.style.color = '#ef4444';
+                msg.textContent = 'Galat PIN. Settings mein jo PIN set hai woh daalo (default 7860).';
+                return;
+            }
+            localStorage.setItem('adh_admin_creds', JSON.stringify(DEFAULT_USER));
+            sessionStorage.removeItem('adh_logged_in');
+            document.getElementById('username').value = 'admin';
+            document.getElementById('password').value = 'admin123';
+            document.getElementById('loginError').style.display = 'none';
+            closeOtpModal();
+            alert('PIN sahi!\n\nPassword reset:\nUsername: admin\nPassword: admin123');
+        }
+
+        // ===== UPI SETTINGS =====
+        function saveUpiSettings() {
+            const upi = document.getElementById('settingsUpiId').value.trim();
+            const name = document.getElementById('settingsUpiName').value.trim() || 'Aman Digital Hub';
+            const msg = document.getElementById('upiSaveMsg');
+            if (!upi || !upi.includes('@')) {
+                msg.style.color = '#ef4444';
+                msg.textContent = 'Valid UPI ID daalo (jaise number@paytm ya name@ybl)';
+                return;
+            }
+            localStorage.setItem('adh_upi_id', upi);
+            localStorage.setItem('adh_upi_name', name);
+            msg.style.color = '#059669';
+            msg.textContent = 'UPI save ho gaya! Website pe Pay ab is ID pe jayega (same browser/device).';
+        }
+
+        function loadUpiSettings() {
+            const upi = localStorage.getItem('adh_upi_id') || '7543811796@paytm';
+            const name = localStorage.getItem('adh_upi_name') || 'Aman Digital Hub';
+            const el1 = document.getElementById('settingsUpiId');
+            const el2 = document.getElementById('settingsUpiName');
+            if (el1) el1.value = upi;
+            if (el2) el2.value = name;
+        }
+
+        // ===== CLIENTS (photo, name, location) =====
+        let clientPhotoData = '';
+
+        function getClients() {
+            try { return JSON.parse(localStorage.getItem('adh_clients') || '[]'); } catch (e) { return []; }
+        }
+
+        function previewClientPhoto(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                clientPhotoData = ev.target.result;
+                const img = document.getElementById('clientPhotoPreview');
+                img.src = clientPhotoData;
+                img.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function cancelClientForm() {
+            document.getElementById('clientFormCard').style.display = 'none';
+            document.getElementById('clientEditId').value = '';
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientLocation').value = '';
+            document.getElementById('clientProject').value = '';
+            document.getElementById('clientReview').value = '';
+            document.getElementById('clientPhoto').value = '';
+            document.getElementById('clientPhotoPreview').style.display = 'none';
+            clientPhotoData = '';
+        }
+
+        function saveClient() {
+            const name = document.getElementById('clientName').value.trim();
+            const location = document.getElementById('clientLocation').value.trim();
+            const project = document.getElementById('clientProject').value.trim();
+            const review = document.getElementById('clientReview').value.trim();
+            const editId = document.getElementById('clientEditId').value;
+
+            if (!name || !location) {
+                alert('Name aur Location zaroori hain');
+                return;
+            }
+
+            let clients = getClients();
+            if (editId) {
+                clients = clients.map(c => c.id === editId ? {
+                    ...c,
+                    name, location, project, review,
+                    photo: clientPhotoData || c.photo
+                } : c);
+            } else {
+                clients.unshift({
+                    id: Date.now().toString(),
+                    name, location, project, review,
+                    photo: clientPhotoData || '',
+                    date: new Date().toISOString()
+                });
+            }
+            localStorage.setItem('adh_clients', JSON.stringify(clients));
+            cancelClientForm();
+            renderClients();
+            showToast('Client saved — website pe bhi dikhega (same device)', 'success');
+        }
+
+        function deleteClient(id) {
+            if (!confirm('Delete this client?')) return;
+            let clients = getClients().filter(c => c.id !== id);
+            localStorage.setItem('adh_clients', JSON.stringify(clients));
+            renderClients();
+        }
+
+        function editClient(id) {
+            const c = getClients().find(x => x.id === id);
+            if (!c) return;
+            document.getElementById('clientFormCard').style.display = 'block';
+            document.getElementById('clientEditId').value = c.id;
+            document.getElementById('clientName').value = c.name;
+            document.getElementById('clientLocation').value = c.location;
+            document.getElementById('clientProject').value = c.project || '';
+            document.getElementById('clientReview').value = c.review || '';
+            clientPhotoData = c.photo || '';
+            const img = document.getElementById('clientPhotoPreview');
+            if (c.photo) {
+                img.src = c.photo;
+                img.style.display = 'block';
+            } else {
+                img.style.display = 'none';
+            }
+        }
+
+        function renderClients() {
+            const list = document.getElementById('clientsList');
+            if (!list) return;
+            const clients = getClients();
+            if (!clients.length) {
+                list.innerHTML = '<p style="color:#5a6a85;font-size:14px;">Abhi koi client nahi. "+ Add Client" se name, photo, location add karo.</p>';
+                return;
+            }
+            list.innerHTML = clients.map(c => `
+                <div style="display:flex;gap:14px;align-items:center;padding:14px;border:1px solid #eef1f6;border-radius:12px;margin-bottom:10px;background:#fff;">
+                    <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;background:#0a1f44;flex-shrink:0;border:2px solid #c9a227;">
+                        ${c.photo ? `<img src="${c.photo}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#e8c547;font-weight:700;">${(c.name||'?')[0]}</div>`}
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                        <strong style="color:#0a1f44;">${c.name}</strong>
+                        <div style="font-size:12px;color:#5a6a85;">📍 ${c.location}${c.project ? ' · ' + c.project : ''}</div>
+                        ${c.review ? `<div style="font-size:12px;color:#64748b;margin-top:4px;font-style:italic;">"${c.review}"</div>` : ''}
+                    </div>
+                    <div style="display:flex;gap:6px;flex-shrink:0;">
+                        <button class="btn-sm btn-view" onclick="editClient('${c.id}')">Edit</button>
+                        <button class="btn-sm" style="background:#fee2e2;color:#b91c1c;" onclick="deleteClient('${c.id}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('adh_logged_in');
+            document.getElementById('adminLayout').classList.remove('active');
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        function showAdmin() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminLayout').classList.add('active');
+            loadDashboard();
+            loadInquiries();
+            loadChats();
+            loadServices();
+            loadContactInfo();
+        }
+
+        // ===== NAVIGATION =====
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            
+            document.getElementById('page-' + page).classList.add('active');
+            document.querySelector(`[data-page="${page}"]`).classList.add('active');
+            
+            const titles = {
+                dashboard: 'Dashboard',
+                inquiries: 'Inquiries',
+                chats: 'AI Chats',
+                services: 'Services',
+                clients: 'Clients',
+                contact: 'Contact Info',
+                settings: 'Settings'
+            };
+            document.getElementById('pageTitle').textContent = titles[page] || page;
+            
+            closeSidebar();
+            
+            if (page === 'inquiries') loadInquiries();
+            if (page === 'chats') loadChats();
+            if (page === 'services') loadServices();
+            if (page === 'dashboard') loadDashboard();
+            if (page === 'clients') renderClients();
+            if (page === 'settings') {
+                loadUpiSettings();
+                const pinEl = document.getElementById('settingsRecoveryPin');
+                if (pinEl) pinEl.value = getRecoveryPin();
+            }
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        // ===== INQUIRIES =====
+        function getInquiries() {
+            return JSON.parse(localStorage.getItem('adh_inquiries') || '[]');
+        }
+
+        function saveInquiries(data) {
+            localStorage.setItem('adh_inquiries', JSON.stringify(data));
+        }
+
+        function loadInquiries() {
+            const inquiries = getInquiries().reverse();
+            const tbody = document.getElementById('inquiriesTable');
+            const empty = document.getElementById('inquiriesEmpty');
+            
+            if (inquiries.length === 0) {
+                tbody.innerHTML = '';
+                empty.style.display = 'block';
+                return;
+            }
+            
+            empty.style.display = 'none';
+            tbody.innerHTML = inquiries.map((inq, i) => `
+                <tr>
+                    <td><strong>${escapeHtml(inq.name)}</strong></td>
+                    <td>${escapeHtml(inq.email)}</td>
+                    <td>${escapeHtml(inq.phone || '—')}</td>
+                    <td>${escapeHtml(inq.service || '—')}</td>
+                    <td>${formatDate(inq.date)}</td>
+                    <td><span class="badge ${inq.read ? 'badge-read' : 'badge-new'}">${inq.read ? 'Read' : 'New'}</span></td>
+                    <td>
+                        <button class="btn-sm btn-view" onclick="viewInquiry('${inq.id}')">View</button>
+                        <button class="btn-sm btn-delete" onclick="deleteInquiry('${inq.id}')">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+            
+            updateBadge();
+        }
+
+        function loadDashboard() {
+            const inquiries = getInquiries();
+            const newCount = inquiries.filter(i => !i.read).length;
+            const chats = getChats();
+            const chatNew = chats.filter(c => !c.read).length;
+            
+            document.getElementById('statInquiries').textContent = inquiries.length;
+            document.getElementById('statNew').textContent = newCount + chatNew;
+            
+            const services = getServices();
+            document.getElementById('statServices').textContent = services.filter(s => s.status === 'active').length;
+            
+            const recent = inquiries.slice().reverse().slice(0, 5);
+            const tbody = document.getElementById('recentInquiries');
+            
+            if (recent.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#94a3b8;">No inquiries yet</td></tr>';
+            } else {
+                tbody.innerHTML = recent.map(inq => `
+                    <tr>
+                        <td><strong>${escapeHtml(inq.name)}</strong></td>
+                        <td>${escapeHtml(inq.service || '—')}</td>
+                        <td>${formatDate(inq.date)}</td>
+                        <td><span class="badge ${inq.read ? 'badge-read' : 'badge-new'}">${inq.read ? 'Read' : 'New'}</span></td>
+                    </tr>
+                `).join('');
+            }
+            
+            updateBadge();
+        }
+
+        function updateBadge() {
+            const newCount = getInquiries().filter(i => !i.read).length;
+            const badge = document.getElementById('inquiryBadge');
+            if (newCount > 0) {
+                badge.textContent = newCount;
+                badge.style.display = 'inline';
+            } else {
+                badge.style.display = 'none';
+            }
+
+            // Chat badge
+            const chatNew = getChats().filter(c => !c.read).length;
+            const chatBadge = document.getElementById('chatBadgeAdmin');
+            if (chatBadge) {
+                if (chatNew > 0) {
+                    chatBadge.textContent = chatNew;
+                    chatBadge.style.display = 'inline';
+                } else {
+                    chatBadge.style.display = 'none';
+                }
+            }
+        }
+
+        function viewInquiry(id) {
+            const inquiries = getInquiries();
+            const inq = inquiries.find(i => i.id === id);
+            if (!inq) return;
+            
+            // Mark as read
+            inq.read = true;
+            saveInquiries(inquiries);
+            
+            document.getElementById('messageDetail').innerHTML = `
+                <p><strong>Name:</strong> ${escapeHtml(inq.name)}</p>
+                <p><strong>Email:</strong> <a href="mailto:${escapeHtml(inq.email)}">${escapeHtml(inq.email)}</a></p>
+                <p><strong>Phone:</strong> ${escapeHtml(inq.phone || 'Not provided')}</p>
+                <p><strong>Service:</strong> ${escapeHtml(inq.service || 'Not specified')}</p>
+                <p><strong>Date:</strong> ${formatDate(inq.date)}</p>
+                <div class="msg-body">${escapeHtml(inq.message)}</div>
+            `;
+            
+            document.getElementById('modalDeleteBtn').onclick = () => {
+                deleteInquiry(id);
+                closeModal();
+            };
+            
+            document.getElementById('messageModal').classList.add('active');
+            loadInquiries();
+            loadDashboard();
+        }
+
+        function deleteInquiry(id) {
+            if (!confirm('Delete this inquiry?')) return;
+            let inquiries = getInquiries();
+            inquiries = inquiries.filter(i => i.id !== id);
+            saveInquiries(inquiries);
+            loadInquiries();
+            loadDashboard();
+            showToast('Inquiry deleted', 'success');
+        }
+
+        function clearAllInquiries() {
+            if (!confirm('Delete ALL inquiries? This cannot be undone.')) return;
+            localStorage.removeItem('adh_inquiries');
+            loadInquiries();
+            loadDashboard();
+            showToast('All inquiries cleared', 'success');
+        }
+
+        // ===== AI CHATS =====
+        function getChats() {
+            return JSON.parse(localStorage.getItem('adh_chats') || '[]');
+        }
+
+        function saveChats(data) {
+            localStorage.setItem('adh_chats', JSON.stringify(data));
+        }
+
+        function loadChats() {
+            const chats = getChats().slice().reverse();
+            const tbody = document.getElementById('chatsTable');
+            const empty = document.getElementById('chatsEmpty');
+
+            if (!tbody) return;
+
+            if (chats.length === 0) {
+                tbody.innerHTML = '';
+                if (empty) empty.style.display = 'block';
+                updateBadge();
+                return;
+            }
+
+            if (empty) empty.style.display = 'none';
+            tbody.innerHTML = chats.map(chat => {
+                const msgCount = chat.messages ? chat.messages.length : 0;
+                const shortId = chat.id.replace('chat_', '').slice(-6);
+                return `
+                <tr>
+                    <td><strong>#${shortId}</strong></td>
+                    <td>${msgCount} messages</td>
+                    <td>${formatDate(chat.started)}</td>
+                    <td>${formatDate(chat.lastUpdate)}</td>
+                    <td><span class="badge ${chat.read ? 'badge-read' : 'badge-new'}">${chat.read ? 'Read' : 'New'}</span></td>
+                    <td>
+                        <button class="btn-sm btn-view" onclick="viewChat('${chat.id}')">View</button>
+                        <button class="btn-sm btn-delete" onclick="deleteChat('${chat.id}')">Delete</button>
+                    </td>
+                </tr>`;
+            }).join('');
+            updateBadge();
+        }
+
+        function viewChat(id) {
+            const chats = getChats();
+            const chat = chats.find(c => c.id === id);
+            if (!chat) return;
+
+            // Mark as read
+            chat.read = true;
+            saveChats(chats);
+
+            let html = '';
+            (chat.messages || []).forEach(msg => {
+                const isBot = msg.role === 'bot';
+                const bg = isBot ? '#fff' : 'linear-gradient(135deg,#0a1f44,#1a3a6e)';
+                const color = isBot ? '#1a1a2e' : '#fff';
+                const align = isBot ? 'flex-start' : 'flex-end';
+                const label = isBot ? 'AI Assistant' : 'Customer';
+                html += `
+                <div style="display:flex;justify-content:${isBot ? 'flex-start' : 'flex-end'};margin-bottom:12px;">
+                    <div style="max-width:80%;">
+                        <div style="font-size:11px;color:#94a3b8;margin-bottom:3px;${isBot ? '' : 'text-align:right;'}">${label} · ${formatDate(msg.time)}</div>
+                        <div style="background:${bg};color:${color};padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5;${isBot ? 'border-bottom-left-radius:4px;' : 'border-bottom-right-radius:4px;'}">${msg.text}</div>
+                    </div>
+                </div>`;
+            });
+
+            document.getElementById('chatDetail').innerHTML = html || '<p style="text-align:center;color:#94a3b8;">No messages</p>';
+            document.getElementById('chatModalDeleteBtn').onclick = () => {
+                deleteChat(id);
+                closeChatModal();
+            };
+            document.getElementById('chatModal').classList.add('active');
+            loadChats();
+            loadDashboard();
+        }
+
+        function deleteChat(id) {
+            if (!confirm('Delete this chat conversation?')) return;
+            let chats = getChats().filter(c => c.id !== id);
+            saveChats(chats);
+            loadChats();
+            loadDashboard();
+            showToast('Chat deleted', 'success');
+        }
+
+        function clearAllChats() {
+            if (!confirm('Delete ALL chat conversations? This cannot be undone.')) return;
+            localStorage.removeItem('adh_chats');
+            loadChats();
+            loadDashboard();
+            showToast('All chats cleared', 'success');
+        }
+
+        function closeChatModal() {
+            document.getElementById('chatModal').classList.remove('active');
+        }
+
+        function closeModal() {
+            document.getElementById('messageModal').classList.remove('active');
+        }
+
+        // ===== SERVICES =====
+        function getServices() {
+            const saved = localStorage.getItem('adh_services');
+            if (saved) return JSON.parse(saved);
+            
+            // Default services
+            return [
+                { id: '1', name: 'Website Development', desc: 'Professional & Responsive Websites', status: 'active' },
+                { id: '2', name: 'Mobile App Development', desc: 'Android & Custom Mobile Apps', status: 'active' },
+                { id: '3', name: 'Web App Development', desc: 'Custom Web Applications & Solutions', status: 'active' }
+            ];
+        }
+
+        function saveServices(data) {
+            localStorage.setItem('adh_services', JSON.stringify(data));
+        }
+
+        function loadServices() {
+            const services = getServices();
+            const tbody = document.getElementById('servicesTable');
+            
+            tbody.innerHTML = services.map(s => `
+                <tr>
+                    <td><strong>${escapeHtml(s.name)}</strong></td>
+                    <td>${escapeHtml(s.desc)}</td>
+                    <td><span class="badge ${s.status === 'active' ? 'badge-read' : 'badge-new'}">${s.status}</span></td>
+                    <td>
+                        <button class="btn-sm btn-edit" onclick="editService('${s.id}')">Edit</button>
+                        <button class="btn-sm btn-delete" onclick="deleteService('${s.id}')">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openServiceModal(id = null) {
+            document.getElementById('serviceId').value = id || '';
+            document.getElementById('serviceModalTitle').textContent = id ? 'Edit Service' : 'Add Service';
+            
+            if (id) {
+                const s = getServices().find(x => x.id === id);
+                if (s) {
+                    document.getElementById('serviceName').value = s.name;
+                    document.getElementById('serviceDesc').value = s.desc;
+                    document.getElementById('serviceStatus').value = s.status;
+                }
+            } else {
+                document.getElementById('serviceName').value = '';
+                document.getElementById('serviceDesc').value = '';
+                document.getElementById('serviceStatus').value = 'active';
+            }
+            
+            document.getElementById('serviceModal').classList.add('active');
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('active');
+        }
+
+        function saveService(e) {
+            e.preventDefault();
+            const id = document.getElementById('serviceId').value;
+            const name = document.getElementById('serviceName').value.trim();
+            const desc = document.getElementById('serviceDesc').value.trim();
+            const status = document.getElementById('serviceStatus').value;
+            
+            let services = getServices();
+            
+            if (id) {
+                const idx = services.findIndex(s => s.id === id);
+                if (idx !== -1) {
+                    services[idx] = { ...services[idx], name, desc, status };
+                }
+            } else {
+                services.push({
+                    id: Date.now().toString(),
+                    name, desc, status
+                });
+            }
+            
+            saveServices(services);
+            loadServices();
+            loadDashboard();
+            closeServiceModal();
+            showToast(id ? 'Service updated' : 'Service added', 'success');
+        }
+
+        function editService(id) {
+            openServiceModal(id);
+        }
+
+        function deleteService(id) {
+            if (!confirm('Delete this service?')) return;
+            let services = getServices().filter(s => s.id !== id);
+            saveServices(services);
+            loadServices();
+            loadDashboard();
+            showToast('Service deleted', 'success');
+        }
+
+        // ===== CONTACT INFO =====
+        function loadContactInfo() {
+            const saved = localStorage.getItem('adh_contact');
+            if (saved) {
+                const data = JSON.parse(saved);
+                document.getElementById('contactPhone').value = data.phone || '';
+                document.getElementById('contactEmail').value = data.email || '';
+                document.getElementById('contactLocation').value = data.location || '';
+                document.getElementById('contactName').value = data.name || '';
+                document.getElementById('contactRole').value = data.role || '';
+            }
+        }
+
+        function saveContactInfo(e) {
+            e.preventDefault();
+            const data = {
+                phone: document.getElementById('contactPhone').value,
+                email: document.getElementById('contactEmail').value,
+                location: document.getElementById('contactLocation').value,
+                name: document.getElementById('contactName').value,
+                role: document.getElementById('contactRole').value
+            };
+            localStorage.setItem('adh_contact', JSON.stringify(data));
+            showToast('Contact info saved successfully', 'success');
+        }
+
+        // ===== SETTINGS =====
+        function saveSettings(e) {
+            e.preventDefault();
+            const username = document.getElementById('settingsUsername').value.trim();
+            const pass1 = document.getElementById('settingsPassword').value;
+            const pass2 = document.getElementById('settingsPassword2').value;
+            
+            if (!username) {
+                showToast('Username cannot be empty');
+                return;
+            }
+            
+            const creds = getCredentials();
+            creds.username = username;
+            
+            if (pass1) {
+                if (pass1 !== pass2) {
+                    showToast('Passwords do not match');
+                    return;
+                }
+                if (pass1.length < 6) {
+                    showToast('Password must be at least 6 characters');
+                    return;
+                }
+                creds.password = pass1;
+            }
+            
+            localStorage.setItem('adh_admin_creds', JSON.stringify(creds));
+            const pin = document.getElementById('settingsRecoveryPin');
+            if (pin && pin.value.trim()) {
+                localStorage.setItem('adh_recovery_pin', pin.value.trim());
+            }
+            document.getElementById('settingsPassword').value = '';
+            document.getElementById('settingsPassword2').value = '';
+            showToast('Settings updated successfully', 'success');
+        }
+
+        // ===== HELPERS =====
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function showToast(msg, type = '') {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.className = 'toast show' + (type ? ' ' + type : '');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ===== INIT =====
+        if (isLoggedIn()) {
+            showAdmin();
+        }
+    </script>
+</body>
+</html>

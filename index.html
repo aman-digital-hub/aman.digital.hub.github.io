@@ -1,0 +1,3510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman Digital Hub | Website, Mobile App & Web App Development</title>
+    <meta name="description" content="Aman Digital Hub by Md Aman — Professional website development, Android apps & custom web applications. Affordable packages from ₹4,999. Working remotely from India.">
+    <meta name="keywords" content="website development, mobile app development, web app, Aman Digital Hub, Md Aman, affordable website India">
+    <meta name="author" content="Md Aman, Aman Digital Hub">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Aman Digital Hub | Digital Solutions for Your Business">
+    <meta property="og:description" content="Websites, Mobile Apps & Web Applications. 50+ happy clients. Starting ₹4,999.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/founder.png">
+    <meta name="theme-color" content="#0a1f44">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a1f44' width='100' height='100' rx='20'/><text x='50' y='68' font-size='40' font-weight='bold' text-anchor='middle' fill='%23e8c547'>ADH</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a1f44;
+            --primary-dark: #061530;
+            --secondary: #1a3a6e;
+            --accent: #c9a227;
+            --accent-light: #e8c547;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --light: #f5f8ff;
+            --text: #1a1a2e;
+            --text-light: #5a6a85;
+            --gradient: linear-gradient(135deg, #0a1f44 0%, #1a3a6e 50%, #0a1f44 100%);
+            --gold-gradient: linear-gradient(90deg, #c9a227, #e8c547, #c9a227);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 0;
+            background: rgba(10, 31, 68, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+            border: 2px solid rgba(201, 162, 39, 0.5);
+            flex-shrink: 0;
+        }
+
+        .logo-text-wrap {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .logo-text-wrap .logo-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.3px;
+        }
+
+        .logo-text-wrap .logo-tag {
+            font-size: 10px;
+            color: var(--accent-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .footer .logo-img {
+            width: 56px;
+            height: 56px;
+            border: 2px solid rgba(201, 162, 39, 0.4);
+        }
+
+        .footer .logo-text-wrap .logo-name {
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links li {
+            flex-shrink: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13.5px;
+            transition: color 0.3s;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, #c9a227, #e8c547) !important;
+            color: #0a1f44 !important;
+            padding: 10px 20px !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            font-size: 13.5px !important;
+            white-space: nowrap !important;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.35);
+            transition: transform 0.3s, box-shadow 0.3s !important;
+            line-height: 1.2 !important;
+            min-width: max-content;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.5);
+            color: #0a1f44 !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 120px 24px 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201,162,39,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(26,58,110,0.6) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .hero-badge span {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 .gold {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 15px;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            box-shadow: 0 6px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(201, 162, 39, 0.55);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent-light);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-founder {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .hero-founder-img {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 0 0 3px rgba(201,162,39,0.35);
+            background: #061530;
+            position: relative;
+        }
+
+        .hero-founder-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .hero-founder-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(6, 21, 48, 0.88);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201,162,39,0.3);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-founder-label .hf-text h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .hero-founder-label .hf-text span {
+            font-size: 12px;
+            color: var(--accent-light);
+        }
+
+        .hero-founder-glow {
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(201,162,39,0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .device-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .laptop {
+            background: linear-gradient(145deg, #1a2a4a, #0d1a30);
+            border-radius: 16px 16px 8px 8px;
+            padding: 12px 12px 0;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .laptop-screen {
+            background: linear-gradient(160deg, #0a1f44 0%, #152a50 100%);
+            border-radius: 8px 8px 0 0;
+            padding: 20px;
+            min-height: 260px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .laptop-screen::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .screen-nav {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .screen-nav span:first-child {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .screen-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .screen-subtitle {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 16px;
+        }
+
+        .screen-btn {
+            display: inline-block;
+            background: var(--gold-gradient);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .laptop-base {
+            height: 14px;
+            background: linear-gradient(180deg, #2a3a5a, #1a2a40);
+            border-radius: 0 0 12px 12px;
+            position: relative;
+        }
+
+        .laptop-base::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 6px;
+            background: #0d1525;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .phone {
+            position: absolute;
+            right: -20px;
+            bottom: 30px;
+            width: 130px;
+            background: #0d1525;
+            border-radius: 22px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,255,255,0.08);
+            z-index: 2;
+            transform: rotate(-6deg);
+        }
+
+        .phone-screen {
+            background: linear-gradient(160deg, #0a1f44, #152a50);
+            border-radius: 16px;
+            padding: 16px 12px;
+            min-height: 220px;
+            text-align: center;
+        }
+
+        .phone-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .phone-icons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .phone-icon {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 12px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .phone-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent-light);
+        }
+
+        .phone-icon span {
+            font-size: 9px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ===== SERVICES STRIP ===== */
+        .services-strip {
+            background: var(--white);
+            padding: 40px 24px;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .services-strip-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(10, 31, 68, 0.12);
+            border: 1px solid rgba(10, 31, 68, 0.06);
+        }
+
+        .strip-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .strip-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(10, 31, 68, 0.25);
+        }
+
+        .strip-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--accent-light);
+        }
+
+        .strip-text h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .strip-text p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--light);
+        }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 28px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(10, 31, 68, 0.12);
+            border-color: rgba(201, 162, 39, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 12px 30px rgba(10, 31, 68, 0.25);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--accent-light);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .founder-photo-wrap {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(10, 31, 68, 0.35);
+            background: #0a1f44;
+        }
+
+        .founder-photo-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+            vertical-align: middle;
+        }
+
+        .founder-photo-badge {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(6, 21, 48, 0.92) 40%);
+            padding: 48px 24px 22px;
+            color: #fff;
+        }
+
+        .founder-photo-badge h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .founder-photo-badge .role {
+            color: var(--accent-light);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .founder-stats-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .founder-stats-row .stat-pill {
+            flex: 1;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(201,162,39,0.25);
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .founder-stats-row .stat-pill h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .founder-stats-row .stat-pill span {
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .about-card {
+            background: var(--gradient);
+            border-radius: 24px;
+            padding: 48px 40px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(10, 31, 68, 0.3);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(201,162,39,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .about-card .role {
+            color: var(--accent-light);
+            font-size: 15px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .about-card p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 32px;
+        }
+
+        .stat h4 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .stat span {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.25;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .feature-item svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ===== PROCESS ===== */
+        .process-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+        .process-step {
+            text-align: center;
+            padding: 28px 20px;
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid #eef1f6;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .process-step:hover { transform: translateY(-6px); }
+        .process-num {
+            width: 48px;
+            height: 48px;
+            background: var(--gold-gradient);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            margin: 0 auto 16px;
+            box-shadow: 0 6px 20px rgba(201,162,39,0.35);
+        }
+        .process-step h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .process-step p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== BLOG ===== */
+        .blog-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .blog-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #eef1f6;
+            box-shadow: 0 4px 15px rgba(10,31,68,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(10,31,68,0.1);
+        }
+        .blog-thumb {
+            height: 140px;
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-light);
+            font-size: 36px;
+        }
+        .blog-body {
+            padding: 22px;
+        }
+        .blog-body .blog-date {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .blog-body h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .blog-body p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .portfolio-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(10,31,68,0.08);
+            border: 1px solid #eef1f6;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(10,31,68,0.12);
+        }
+        .portfolio-img {
+            height: 180px;
+            background: linear-gradient(160deg, #0a1f44 0%, #1a3a6e 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 12px 12px 0;
+        }
+        .portfolio-img .browser-bar {
+            height: 18px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 6px 6px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 10px;
+            margin-bottom: 0;
+        }
+        .portfolio-img .browser-bar i {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+        }
+        .portfolio-img .browser-bar i:nth-child(1) { background: #ff5f56; }
+        .portfolio-img .browser-bar i:nth-child(2) { background: #ffbd2e; }
+        .portfolio-img .browser-bar i:nth-child(3) { background: #27c93f; }
+        .portfolio-img .site-preview {
+            background: #fff;
+            border-radius: 0 0 6px 6px;
+            height: calc(100% - 18px);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .portfolio-img .site-preview .sp-nav {
+            height: 8px;
+            background: #e8ecf4;
+            border-radius: 4px;
+            width: 100%;
+        }
+        .portfolio-img .site-preview .sp-hero {
+            height: 36px;
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e8c547;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .portfolio-img .site-preview .sp-row {
+            display: flex;
+            gap: 6px;
+            flex: 1;
+        }
+        .portfolio-img .site-preview .sp-box {
+            flex: 1;
+            background: #f0f4fa;
+            border-radius: 4px;
+        }
+        .portfolio-img .site-preview .sp-box.accent {
+            background: linear-gradient(135deg, rgba(201,162,39,0.2), rgba(201,162,39,0.05));
+        }
+        .portfolio-img span.emoji-fallback {
+            font-size: 42px;
+            opacity: 0.9;
+            display: none;
+        }
+        .portfolio-body {
+            padding: 20px;
+        }
+        .portfolio-body .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(201,162,39,0.12);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .portfolio-body h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .portfolio-body p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Payment Modal */
+        .pay-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 31, 68, 0.65);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .pay-modal-overlay.active {
+            display: flex;
+        }
+        .pay-modal {
+            background: #fff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        .pay-modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #eef1f6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pay-modal-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .pay-modal-close {
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #94a3b8;
+            line-height: 1;
+        }
+        .pay-modal-body {
+            padding: 24px;
+        }
+        .pay-modal-body .form-group {
+            margin-bottom: 16px;
+        }
+        .pay-modal-body label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .pay-modal-body input,
+        .pay-modal-body select,
+        .pay-modal-body textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #e0e6f0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            background: #f5f8ff;
+        }
+        .pay-modal-body input:focus,
+        .pay-modal-body select:focus,
+        .pay-modal-body textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201,162,39,0.15);
+            background: #fff;
+        }
+        .pay-package-info {
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pay-package-info strong {
+            color: var(--accent-light);
+        }
+        .pay-modal-footer {
+            padding: 16px 24px 24px;
+        }
+        .pay-modal-footer .btn {
+            width: 100%;
+            justify-content: center;
+        }
+        .price-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 36px 28px;
+            border: 2px solid #eef1f6;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .price-card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(201,162,39,0.2);
+            transform: scale(1.03);
+        }
+        .price-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold-gradient);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+        .price-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(10,31,68,0.1);
+        }
+        .price-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .price-card .price {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 16px 0 8px;
+        }
+        .price-card .price span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .price-card .price-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 28px;
+        }
+        .price-card ul li {
+            font-size: 14px;
+            color: var(--text);
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f2f7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .price-card ul li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-banner {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .testimonials-banner .count {
+            font-size: 48px;
+            font-weight: 800;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .testimonials-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #eef1f6;
+            box-shadow: 0 4px 15px rgba(10,31,68,0.05);
+            transition: transform 0.3s;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(10,31,68,0.1);
+        }
+        .testimonial-stars {
+            color: #f59e0b;
+            font-size: 14px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.65;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 2px solid rgba(201,162,39,0.4);
+        }
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .testimonial-author h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .testimonial-author span {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        .clients-marquee {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .clients-marquee-track {
+            display: flex;
+            gap: 16px;
+            animation: marquee 60s linear infinite;
+            width: max-content;
+        }
+        .clients-marquee-track span {
+            flex-shrink: 0;
+            background: var(--white);
+            border: 1px solid #eef1f6;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #eef1f6;
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 18px 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+        .faq-question span {
+            font-size: 20px;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-question span {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+        .faq-answer p {
+            padding: 0 24px 20px;
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: var(--gradient);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta h2 .gold {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 36px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--light);
+        }
+
+        .contact-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            background: var(--white);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(10, 31, 68, 0.06);
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(6px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent-light);
+        }
+
+        .contact-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 14px;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(10, 31, 68, 0.08);
+        }
+
+        .contact-form h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #e0e6f0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--text);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: var(--light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.15);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold-gradient);
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.35);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.5);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 24px 30px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--accent-light);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-bottom .tagline {
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-visual {
+                order: 2;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .services-strip-inner {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .portfolio-grid,
+            .pricing-grid,
+            .testimonials-grid,
+            .process-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .price-card.featured {
+                transform: none;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-top: 1px solid rgba(201,162,39,0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section-header h2 {
+                font-size: 30px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+
+            .phone {
+                width: 100px;
+                right: 0;
+            }
+        }
+
+        /* Smooth reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="images/logo.png" alt="Aman Digital Hub" class="logo-img">
+                <div class="logo-text-wrap">
+                    <span class="logo-name">Aman Digital Hub</span>
+                    <span class="logo-tag">IDEAS · DESIGN · DEVELOP</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span></span>
+                    Your Digital Partner
+                </div>
+                <p class="hero-tagline">IDEAS  |  DESIGN  |  DEVELOP  |  GROW</p>
+                <h1>Innovative <span class="gold">Digital Solutions</span> for Your Business</h1>
+                <p class="hero-desc">Transform your ideas into powerful websites, mobile apps & web applications. We build digital experiences that drive growth.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        Get Started
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-founder">
+                    <div class="hero-founder-glow"></div>
+                    <div class="hero-founder-img">
+                        <img src="images/founder.png" alt="Md Aman - Founder, Aman Digital Hub">
+                        <div class="hero-founder-label">
+                            <div class="hf-text">
+                                <h4>Md Aman</h4>
+                                <span>Founder & Web/App Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES STRIP -->
+    <div class="services-strip">
+        <div class="services-strip-inner">
+            <div class="strip-item">
+                <div class="strip-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div class="strip-text">
+                    <h4>Website Development</h4>
+                    <p>Professional & Responsive</p>
+                </div>
+            </div>
+            <div class="strip-item">
+                <div class="strip-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                </div>
+                <div class="strip-text">
+                    <h4>Mobile App Development</h4>
+                    <p>Android & Custom Apps</p>
+                </div>
+            </div>
+            <div class="strip-item">
+                <div class="strip-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                </div>
+                <div class="strip-text">
+                    <h4>Web App Development</h4>
+                    <p>Custom Solutions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="section services" id="services">
+        <div class="section-header reveal">
+            <span class="section-label">What We Offer</span>
+            <h2>Our Services</h2>
+            <p>From idea to reality — we deliver high-quality digital products that help your business grow.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <h3>Website Development</h3>
+                <p>Professional & responsive websites that look stunning on every device. Fast, SEO-friendly and conversion-focused designs tailored to your brand.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                </div>
+                <h3>Mobile App Development</h3>
+                <p>Native & cross-platform mobile apps for Android. Beautiful UI, smooth performance and powerful features that keep users engaged.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                </div>
+                <h3>Web App Development</h3>
+                <p>Custom web applications & solutions built with modern technologies. Scalable, secure and designed to solve real business problems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="process" style="background:var(--light);">
+        <div class="section-header reveal">
+            <span class="section-label">Simple Process</span>
+            <h2>How It Works</h2>
+            <p>From first message to final delivery — clear steps, no confusion.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step reveal">
+                <div class="process-num">1</div>
+                <h3>Share Requirements</h3>
+                <p>WhatsApp, call or contact form se apna idea / business need batao.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="process-num">2</div>
+                <h3>Get Quote & Plan</h3>
+                <p>Package, timeline aur features confirm. Advance payment se booking.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="process-num">3</div>
+                <h3>Design & Develop</h3>
+                <p>Preview share hota hai. Feedback ke baad changes, phir build complete.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="process-num">4</div>
+                <h3>Launch & Support</h3>
+                <p>Go live. Source files aapke. Support period mein free fixes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="section" id="portfolio">
+        <div class="section-header reveal">
+            <span class="section-label">Our Work</span>
+            <h2>Portfolio & Projects</h2>
+            <p>Real projects delivered for businesses across India — websites, apps & web solutions.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero">STYLEMART · SHOP NOW</div>
+                        <div class="sp-row"><div class="sp-box accent"></div><div class="sp-box"></div><div class="sp-box accent"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">E-Commerce Website</span>
+                    <h3>StyleMart Online Store</h3>
+                    <p>Full e-commerce website with product catalog, cart & payment integration for a fashion brand.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;">FITLIFE GYM APP</div>
+                        <div class="sp-row"><div class="sp-box"></div><div class="sp-box accent"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">Android App</span>
+                    <h3>FitLife Gym App</h3>
+                    <p>Fitness tracking Android app with workout plans, progress charts & membership management.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);color:#fff;">MEDICARE · BOOK NOW</div>
+                        <div class="sp-row"><div class="sp-box accent"></div><div class="sp-box"></div><div class="sp-box"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">Web Application</span>
+                    <h3>MediCare Booking Portal</h3>
+                    <p>Hospital appointment booking system with doctor schedules, patient dashboard & SMS alerts.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;">EDUSPARK COACHING</div>
+                        <div class="sp-row"><div class="sp-box"></div><div class="sp-box accent"></div><div class="sp-box"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">Website</span>
+                    <h3>EduSpark Coaching</h3>
+                    <p>Responsive coaching institute website with course pages, enrollment form & student gallery.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#c2410c,#f97316);color:#fff;">SPICEROUTE MENU</div>
+                        <div class="sp-row"><div class="sp-box accent"></div><div class="sp-box accent"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">Mobile + Web</span>
+                    <h3>SpiceRoute Restaurant</h3>
+                    <p>Food ordering web app + Android app with menu, live orders & delivery tracking.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#44403c,#78716c);color:#fff;">BUILDRIGHT PROJECTS</div>
+                        <div class="sp-row"><div class="sp-box"></div><div class="sp-box"></div><div class="sp-box accent"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">Business Website</span>
+                    <h3>BuildRight Constructions</h3>
+                    <p>Corporate website with project showcase, inquiry forms & service pages for a construction firm.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#1e3a5f,#3b82f6);color:#fff;">CRM DASHBOARD</div>
+                        <div class="sp-row"><div class="sp-box accent"></div><div class="sp-box"></div><div class="sp-box accent"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">Web App / CRM</span>
+                    <h3>SalesForce Lite CRM</h3>
+                    <p>Custom CRM dashboard for lead tracking, follow-ups, reports & team management.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;">HOMENEST REALTY</div>
+                        <div class="sp-row"><div class="sp-box"></div><div class="sp-box accent"></div><div class="sp-box"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">Website</span>
+                    <h3>HomeNest Realty</h3>
+                    <p>Real estate listing website with property search filters, image gallery & agent contact.</p>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <div class="browser-bar"><i></i><i></i><i></i></div>
+                    <div class="site-preview">
+                        <div class="sp-nav"></div>
+                        <div class="sp-hero" style="background:linear-gradient(135deg,#15803d,#22c55e);color:#fff;">DAILYBASKET GROCERY</div>
+                        <div class="sp-row"><div class="sp-box accent"></div><div class="sp-box accent"></div><div class="sp-box"></div></div>
+                    </div>
+                </div>
+                <div class="portfolio-body">
+                    <span class="tag">E-Commerce + App</span>
+                    <h3>DailyBasket Grocery</h3>
+                    <p>Grocery delivery platform — website + Android app with inventory & order management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+        <div class="section-header reveal">
+            <span class="section-label">Transparent Pricing</span>
+            <h2>Simple & Affordable Packages</h2>
+            <p>Choose a plan that fits your needs. Fill your details, then pay securely via Google Pay / PhonePe / Paytm (UPI).</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card reveal">
+                <h3>Starter Website</h3>
+                <div class="price">₹4,999 <span>onwards</span></div>
+                <p class="price-desc">Perfect for individuals & freelancers</p>
+                <ul>
+                    <li>Up to 5 Pages</li>
+                    <li>Mobile Responsive Design</li>
+                    <li>Contact Form</li>
+                    <li>Basic SEO Setup</li>
+                    <li>1 Month Support</li>
+                </ul>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;background:linear-gradient(135deg,#4285F4,#34A853);color:#fff;box-shadow:0 4px 15px rgba(66,133,244,0.35);" onclick="openPayModal(4999, 'Starter Website')">💳 Pay ₹4,999</button>
+                    <a href="https://wa.me/917543811796?text=Hi%2C%20I%20am%20interested%20in%20Starter%20Website%20(₹4999)" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;border-color:#0a1f44;color:#0a1f44;">Chat on WhatsApp</a>
+                </div>
+            </div>
+            <div class="price-card reveal">
+                <h3>Business Website</h3>
+                <div class="price">₹8,999 <span>onwards</span></div>
+                <p class="price-desc">For small & growing businesses</p>
+                <ul>
+                    <li>Up to 10 Pages</li>
+                    <li>Custom Design</li>
+                    <li>Contact + Inquiry Forms</li>
+                    <li>SEO Optimized</li>
+                    <li>2 Months Support</li>
+                </ul>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;background:linear-gradient(135deg,#4285F4,#34A853);color:#fff;box-shadow:0 4px 15px rgba(66,133,244,0.35);" onclick="openPayModal(8999, 'Business Website')">💳 Pay ₹8,999</button>
+                    <a href="https://wa.me/917543811796?text=Hi%2C%20I%20am%20interested%20in%20Business%20Website%20(₹8999)" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;border-color:#0a1f44;color:#0a1f44;">Chat on WhatsApp</a>
+                </div>
+            </div>
+            <div class="price-card featured reveal">
+                <h3>Business Pro</h3>
+                <div class="price">₹13,999 <span>onwards</span></div>
+                <p class="price-desc">Best for established businesses</p>
+                <ul>
+                    <li>Up to 15 Pages</li>
+                    <li>Premium Custom Design</li>
+                    <li>Admin Panel</li>
+                    <li>Speed & SEO Optimized</li>
+                    <li>Blog / Gallery Section</li>
+                    <li>3 Months Support</li>
+                </ul>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="openPayModal(13999, 'Business Pro')">💳 Pay ₹13,999</button>
+                    <a href="https://wa.me/917543811796?text=Hi%2C%20I%20am%20interested%20in%20Business%20Pro%20(₹13999)" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;border-color:#0a1f44;color:#0a1f44;">Chat on WhatsApp</a>
+                </div>
+            </div>
+            <div class="price-card reveal">
+                <h3>E-Commerce Store</h3>
+                <div class="price">₹19,999 <span>onwards</span></div>
+                <p class="price-desc">Sell products online easily</p>
+                <ul>
+                    <li>Product Catalog & Cart</li>
+                    <li>Payment Gateway Ready</li>
+                    <li>Order Management</li>
+                    <li>Admin Dashboard</li>
+                    <li>Mobile Responsive</li>
+                    <li>3 Months Support</li>
+                </ul>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;background:linear-gradient(135deg,#4285F4,#34A853);color:#fff;box-shadow:0 4px 15px rgba(66,133,244,0.35);" onclick="openPayModal(19999, 'E-Commerce Store')">💳 Pay ₹19,999</button>
+                    <a href="https://wa.me/917543811796?text=Hi%2C%20I%20am%20interested%20in%20E-Commerce%20Store%20(₹19999)" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;border-color:#0a1f44;color:#0a1f44;">Chat on WhatsApp</a>
+                </div>
+            </div>
+            <div class="price-card reveal">
+                <h3>Mobile App</h3>
+                <div class="price">₹28,999 <span>onwards</span></div>
+                <p class="price-desc">Android apps for your business</p>
+                <ul>
+                    <li>Android Native / Flutter</li>
+                    <li>Custom UI & Features</li>
+                    <li>Push Notifications</li>
+                    <li>Backend Integration</li>
+                    <li>Play Store Guidance</li>
+                    <li>6 Months Support</li>
+                </ul>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;background:linear-gradient(135deg,#4285F4,#34A853);color:#fff;box-shadow:0 4px 15px rgba(66,133,244,0.35);" onclick="openPayModal(28999, 'Mobile App')">💳 Pay ₹28,999</button>
+                    <a href="https://wa.me/917543811796?text=Hi%2C%20I%20am%20interested%20in%20Mobile%20App%20(₹28999)" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;border-color:#0a1f44;color:#0a1f44;">Chat on WhatsApp</a>
+                </div>
+            </div>
+            <div class="price-card reveal">
+                <h3>Custom Web App</h3>
+                <div class="price">₹34,999 <span>onwards</span></div>
+                <p class="price-desc">CRM, portals & custom systems</p>
+                <ul>
+                    <li>Fully Custom Web Application</li>
+                    <li>Database & Admin Panel</li>
+                    <li>User Login & Roles</li>
+                    <li>API Integrations</li>
+                    <li>Reports & Dashboard</li>
+                    <li>6 Months Support</li>
+                </ul>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;background:linear-gradient(135deg,#4285F4,#34A853);color:#fff;box-shadow:0 4px 15px rgba(66,133,244,0.35);" onclick="openPayModal(34999, 'Custom Web App')">💳 Pay ₹34,999</button>
+                    <a href="https://wa.me/917543811796?text=Hi%2C%20I%20am%20interested%20in%20Custom%20Web%20App%20(₹34999)" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;border-color:#0a1f44;color:#0a1f44;">Chat on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--text-light);" class="reveal">
+            🔒 Secure UPI Payment · Google Pay · PhonePe · Paytm · BHIM<br>
+            After payment, please send screenshot on WhatsApp for confirmation.
+        </p>
+    </section>
+
+    <!-- PAYMENT DETAILS MODAL -->
+    <div class="pay-modal-overlay" id="payModal">
+        <div class="pay-modal">
+            <div class="pay-modal-header">
+                <h3>Complete Your Details</h3>
+                <button type="button" class="pay-modal-close" onclick="closePayModal()">&times;</button>
+            </div>
+            <div class="pay-modal-body">
+                <div class="pay-package-info">
+                    <div>
+                        <div style="font-size:12px;opacity:0.8;">Selected Package</div>
+                        <strong id="payPackageName">Starter Website</strong>
+                    </div>
+                    <div style="font-size:22px;font-weight:800;" id="payPackageAmount">₹4,999</div>
+                </div>
+                <form id="payDetailsForm" onsubmit="submitPayDetails(event)">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="payName" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="payPhone" required placeholder="+91 98765 43210" pattern="[0-9+\s\-]{10,15}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="payEmail" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>City / Location</label>
+                        <input type="text" id="payCity" placeholder="e.g. Delhi, Mumbai">
+                    </div>
+                    <div class="form-group">
+                        <label>Business / Company Name</label>
+                        <input type="text" id="payBusiness" placeholder="Optional">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Requirements</label>
+                        <textarea id="payRequirements" rows="3" placeholder="Briefly describe what you need..."></textarea>
+                    </div>
+                    <div class="pay-modal-footer" style="padding:8px 0 0;">
+                        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Proceed to Payment →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials" style="background:var(--light);">
+        <div class="section-header reveal">
+            <span class="section-label">Client Love</span>
+            <h2>What Our Clients Say</h2>
+            <p>Trusted by 50+ businesses across India for websites, mobile apps & web applications.</p>
+        </div>
+        <div class="testimonials-banner reveal">
+            <div class="count">50+</div>
+            <p style="color:var(--text-light);font-size:16px;">Happy Clients · 4.9★ Average Rating</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Aman ne meri business website 12 din mein banayi. Design modern hai aur mobile pe perfect dikhti hai. Highly recommended!"</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/rahul.jpg" alt="Rahul Kapoor"></div><div><h4>Rahul Kapoor</h4><span>Business Owner · Delhi</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Fitness app ke liye kaam karwaya. UI clean hai, performance smooth. Clients ko app bahut pasand aayi."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/priya.jpg" alt="Priya Sharma"></div><div><h4>Priya Sharma</h4><span>Gym Owner · Mumbai</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"E-commerce store banwaya. Payment gateway se leke product management tak sab sorted. Sales badh gayi."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/amit.jpg" alt="Amit Verma"></div><div><h4>Amit Verma</h4><span>Fashion Brand · Jaipur</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Hospital booking portal ke liye contact kiya. System stable hai, staff easily use kar paate hain. Great work!"</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/sneha.jpg" alt="Dr. Sneha Gupta"></div><div><h4>Dr. Sneha Gupta</h4><span>Clinic · Lucknow</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Coaching institute ki website chahiye thi. Course pages, inquiry form — sab professional. Students inquiries badh gayi."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/mohit.jpg" alt="Mohit Rathore"></div><div><h4>Mohit Rathore</h4><span>EduSpark · Indore</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Restaurant ke liye ordering app banwaya. Orders ab online aate hain. Aman responsive aur honest developer hai."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/neha.jpg" alt="Neha Khan"></div><div><h4>Neha Khan</h4><span>Restaurant · Hyderabad</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Construction company website. Project gallery bahut acchi lagi clients ko. Delivery on time thi."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/vikram.jpg" alt="Vikram Singh"></div><div><h4>Vikram Singh</h4><span>BuildRight · Chandigarh</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Custom CRM chahiye tha sales team ke liye. Dashboard clear hai, reports milte hain. Paisa wasool!"</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/anjali.jpg" alt="Anjali Joshi"></div><div><h4>Anjali Joshi</h4><span>Sales Manager · Pune</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Real estate listing website. Filters, photos, contact — sab smooth. Agents ko manage karna easy ho gaya."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/deepak.jpg" alt="Deepak Patel"></div><div><h4>Deepak Patel</h4><span>HomeNest · Ahmedabad</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Grocery delivery app + website. Inventory aur orders handle ho rahe hain. Support bhi milta hai jab zarurat ho."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/sanjay.jpg" alt="Sanjay Reddy"></div><div><h4>Sanjay Reddy</h4><span>DailyBasket · Bangalore</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"Portfolio website banwayi freelance ke liye. Design clean, load fast. Clients ab online milte hain."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/kavita.jpg" alt="Kavita Mehta"></div><div><h4>Kavita Mehta</h4><span>Designer · Surat</span></div></div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p>"School management web app. Fees, attendance, reports — ek jagah. Teachers aur parents dono happy."</p>
+                <div class="testimonial-author"><div class="testimonial-avatar"><img src="images/clients/ramesh.jpg" alt="Ramesh Tiwari"></div><div><h4>Ramesh Tiwari</h4><span>School Admin · Kanpur</span></div></div>
+            </div>
+        </div>
+
+        <!-- 50 Client Names Marquee -->
+        <div class="clients-marquee reveal">
+            <div class="clients-marquee-track" id="clientsTrack">
+                <span>Rahul Kapoor</span><span>Priya Sharma</span><span>Amit Verma</span><span>Dr. Sneha Gupta</span><span>Mohit Rathore</span>
+                <span>Neha Khan</span><span>Vikram Singh</span><span>Anjali Joshi</span><span>Deepak Patel</span><span>Sanjay Reddy</span>
+                <span>Kavita Mehta</span><span>Ramesh Tiwari</span><span>Suresh Yadav</span><span>Pooja Nair</span><span>Arjun Malhotra</span>
+                <span>Farhan Ali</span><span>Meera Iyer</span><span>Karan Desai</span><span>Shweta Banerjee</span><span>Imran Qureshi</span>
+                <span>Nikita Rao</span><span>Harsh Vardhan</span><span>Sunita Devi</span><span>Rohit Chawla</span><span>Ayesha Siddiqui</span>
+                <span>Manish Agarwal</span><span>Divya Krishnan</span><span>Tarun Bhatia</span><span>Sana Fatima</span><span>Gaurav Mishra</span>
+                <span>Ritu Saxena</span><span>Aditya Chauhan</span><span>Nazia Parveen</span><span>Yashwant Kulkarni</span><span>Bhavna Shah</span>
+                <span>Prakash Jha</span><span>Lata Menon</span><span>Wasim Akhtar</span><span>Chitra Pillai</span><span>Naveen Kumar</span>
+                <span>Shilpa Reddy</span><span>Omar Farooq</span><span>Geeta Rani</span><span>Siddharth Jain</span><span>Zara Hussain</span>
+                <span>Alok Pandey</span><span>Preeti Kaur</span><span>Faizan Ahmed</span><span>Jyoti Kumari</span><span>Vishal Thakur</span>
+                <!-- duplicate for seamless loop -->
+                <span>Rahul Kapoor</span><span>Priya Sharma</span><span>Amit Verma</span><span>Dr. Sneha Gupta</span><span>Mohit Rathore</span>
+                <span>Neha Khan</span><span>Vikram Singh</span><span>Anjali Joshi</span><span>Deepak Patel</span><span>Sanjay Reddy</span>
+                <span>Kavita Mehta</span><span>Ramesh Tiwari</span><span>Suresh Yadav</span><span>Pooja Nair</span><span>Arjun Malhotra</span>
+                <span>Farhan Ali</span><span>Meera Iyer</span><span>Karan Desai</span><span>Shweta Banerjee</span><span>Imran Qureshi</span>
+                <span>Nikita Rao</span><span>Harsh Vardhan</span><span>Sunita Devi</span><span>Rohit Chawla</span><span>Ayesha Siddiqui</span>
+                <span>Manish Agarwal</span><span>Divya Krishnan</span><span>Tarun Bhatia</span><span>Sana Fatima</span><span>Gaurav Mishra</span>
+                <span>Ritu Saxena</span><span>Aditya Chauhan</span><span>Nazia Parveen</span><span>Yashwant Kulkarni</span><span>Bhavna Shah</span>
+                <span>Prakash Jha</span><span>Lata Menon</span><span>Wasim Akhtar</span><span>Chitra Pillai</span><span>Naveen Kumar</span>
+                <span>Shilpa Reddy</span><span>Omar Farooq</span><span>Geeta Rani</span><span>Siddharth Jain</span><span>Zara Hussain</span>
+                <span>Alok Pandey</span><span>Preeti Kaur</span><span>Faizan Ahmed</span><span>Jyoti Kumari</span><span>Vishal Thakur</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section" id="blog" style="background:var(--light);">
+        <div class="section-header reveal">
+            <span class="section-label">Insights</span>
+            <h2>Latest from the Blog</h2>
+            <p>Tips on websites, apps and growing your business online.</p>
+        </div>
+        <div class="blog-grid">
+            <article class="blog-card reveal">
+                <div class="blog-thumb">💡</div>
+                <div class="blog-body">
+                    <div class="blog-date">Oct 2025</div>
+                    <h3>Why Every Small Business Needs a Website in 2025</h3>
+                    <p>Customers search online first. A clean, mobile-friendly website builds trust and brings inquiries even while you sleep.</p>
+                </div>
+            </article>
+            <article class="blog-card reveal">
+                <div class="blog-thumb">📱</div>
+                <div class="blog-body">
+                    <div class="blog-date">Sep 2025</div>
+                    <h3>Website vs Mobile App — What Should You Build First?</h3>
+                    <p>Start with a website for reach and SEO. Add an app when you need loyalty, notifications or frequent user engagement.</p>
+                </div>
+            </article>
+            <article class="blog-card reveal">
+                <div class="blog-thumb">🚀</div>
+                <div class="blog-body">
+                    <div class="blog-date">Aug 2025</div>
+                    <h3>5 Things to Prepare Before Hiring a Developer</h3>
+                    <p>Clear goals, reference sites, budget range, content readiness and one decision-maker — these save time and money.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="section-header reveal">
+            <span class="section-label">Common Questions</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Quick answers about our services, process & pricing.</p>
+        </div>
+        <div class="faq-list reveal">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Website banwane mein kitna time lagta hai? <span>+</span></button>
+                <div class="faq-answer"><p>Simple website 7–15 days, business website 15–30 days. Complexity aur features pe depend karta hai. Urgent projects pe priority de sakte hain.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Payment kaise hota hai? <span>+</span></button>
+                <div class="faq-answer"><p>Generally 40% advance, baaki delivery pe. Badi projects mein milestones ke hisaab se bhi payment schedule banaya ja sakta hai. UPI, Bank transfer accept karte hain.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Kya domain aur hosting aap arrange karte ho? <span>+</span></button>
+                <div class="faq-answer"><p>Haan, help kar sakte hain. Domain + hosting alag cost hoti hai (approx ₹1,000–3,000/year). Aapke naam pe register karte hain.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Mobile app ke liye Play Store publish bhi karte ho? <span>+</span></button>
+                <div class="faq-answer"><p>Haan, Android app complete karke Play Store pe publish karne mein full help milti hai. Google Play developer account aapka hona chahiye.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">After delivery support milta hai? <span>+</span></button>
+                <div class="faq-answer"><p>Haan. Package ke hisaab se 1–6 months free support. Uske baad maintenance plan available hai. Bug fixes support period mein free hote hain.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Kya aap existing website redesign bhi karte ho? <span>+</span></button>
+                <div class="faq-answer"><p>Bilkul. Purani website ko modern, fast aur mobile-friendly bana sakte hain. Content migrate bhi kar dete hain.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Remote se kaam kaise hota hai? <span>+</span></button>
+                <div class="faq-answer"><p>WhatsApp, call aur video call pe discussion. Design preview share karte hain, feedback lete hain, phir final delivery. Poora process transparent rehta hai.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Source code milta hai? <span>+</span></button>
+                <div class="faq-answer"><p>Haan, project complete hone ke baad aapko full source code / files milte hain. Aapke ownership mein hota hai.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="about-container">
+            <div class="about-image reveal">
+                <div class="founder-photo-wrap">
+                    <img src="images/founder.png" alt="Md Aman - Founder & Web/App Developer, Aman Digital Hub" width="520" height="650" loading="lazy">
+                    <div class="founder-photo-badge">
+                        <h3>Md Aman</h3>
+                        <p class="role">Founder & Web/App Developer</p>
+                        <div class="founder-stats-row">
+                            <div class="stat-pill"><h4>50+</h4><span>Clients</span></div>
+                            <div class="stat-pill"><h4>80+</h4><span>Projects</span></div>
+                            <div class="stat-pill"><h4>24/7</h4><span>Support</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content reveal">
+                <span class="section-label">About Us</span>
+                <h2>Your Digital Partner for a Smarter Tomorrow</h2>
+                <p>At <strong>Aman Digital Hub</strong>, we believe every business deserves a powerful digital presence. Whether you need a stunning website, a feature-rich mobile app, or a custom web application — we deliver excellence.</p>
+                <p>Working remotely from India, we serve clients worldwide with dedicated attention, transparent communication, and results that matter. Passionate about turning ideas into powerful digital products.</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Clean & Modern Design
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Fully Responsive on All Devices
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Fast Delivery & Reliable Support
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Affordable Pricing for Startups & SMEs
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-content reveal">
+            <h2>Let's Build Your Ideas <span class="gold">Into Reality</span></h2>
+            <p>Ready to take your business digital? Get in touch today and let's create something amazing together.</p>
+            <a href="#contact" class="btn btn-primary">
+                Start Your Project
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+        <div class="section-header reveal">
+            <span class="section-label">Get In Touch</span>
+            <h2>Contact Us</h2>
+            <p>Have a project in mind? Let's discuss how we can help you grow.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <a href="tel:+917543811796">+91 7543811796</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <a href="mailto:ansarimadaman22@gmail.com">ansarimadaman22@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Working Remotely – India</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon" style="background:linear-gradient(135deg,#128C7E,#25D366);">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </div>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <a href="https://wa.me/917543811796?text=Hi%2C%20I%20want%20to%20discuss%20a%20project" target="_blank">Chat on WhatsApp</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Instagram</h4>
+                        <a href="https://instagram.com/md_aman._786" target="_blank">@md_aman._786</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form reveal">
+                <h3>Send a Message</h3>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" placeholder="+91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Interested In</label>
+                        <select name="service">
+                            <option value="">Select a service</option>
+                            <option value="website">Website Development</option>
+                            <option value="mobile">Mobile App Development</option>
+                            <option value="webapp">Web App Development</option>
+                            <option value="other">Other / Consultation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea name="message" required placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <img src="images/logo.png" alt="Aman Digital Hub" class="logo-img">
+                    <div class="logo-text-wrap">
+                        <span class="logo-name">Aman Digital Hub</span>
+                        <span class="logo-tag">IDEAS · DESIGN · DEVELOP</span>
+                    </div>
+                </a>
+                <p>Your Digital Partner for a Smarter Tomorrow. We turn ideas into powerful digital products.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">How It Works</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Website Development</a></li>
+                    <li><a href="#services">Mobile App Development</a></li>
+                    <li><a href="#services">Web App Development</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://wa.me/917543811796" target="_blank">WhatsApp</a></li>
+                    <li><a href="https://instagram.com/md_aman._786" target="_blank">Instagram @md_aman._786</a></li>
+                    <li><a href="mailto:ansarimadaman22@gmail.com">Email</a></li>
+                    <li><a href="tel:+917543811796">+91 7543811796</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="tagline">LET'S BUILD YOUR IDEAS INTO REALITY</span>
+            <p>© 2025 Aman Digital Hub. All rights reserved. · <a href="privacy.html" style="color:rgba(255,255,255,0.6);">Privacy</a> · <a href="terms.html" style="color:rgba(255,255,255,0.6);">Terms</a></p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/917543811796?text=Hi%2C%20I%20want%20to%20discuss%20a%20project" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#fff" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- AI CHATBOT WIDGET -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">AI</div>
+                    <div>
+                        <h4>ADH Assistant</h4>
+                        <span class="chat-status">● Online</span>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose" title="Close">&times;</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-msg bot">
+                    <div class="msg-bubble">
+                        Namaste! 👋 Main <strong>Aman Digital Hub</strong> ka AI Assistant hoon.<br><br>
+                        Main aapki help kar sakta hoon:<br>
+                        • Website / App development<br>
+                        • Pricing & services<br>
+                        • Project discussion<br>
+                        • Contact details<br><br>
+                        Kya madad chahiye?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-quick">
+                <button onclick="sendQuick('Services kya hain?')">Services</button>
+                <button onclick="sendQuick('Pricing kya hai?')">Pricing</button>
+                <button onclick="sendQuick('WhatsApp')">WhatsApp</button>
+                <button onclick="sendQuick('Contact details')">Contact</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off">
+                <button id="chatSend" title="Send">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+        </div>
+        <button class="chat-toggle" id="chatToggle" title="Chat with AI">
+            <svg class="chat-icon" viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+            <svg class="close-icon" viewBox="0 0 24 24" width="28" height="28" style="display:none;"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            <span class="chat-badge" id="chatBadge">1</span>
+        </button>
+    </div>
+
+    <style>
+        /* ===== WhatsApp Float ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            z-index: 9998;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+        }
+        @media (max-width: 480px) {
+            .whatsapp-float {
+                bottom: 90px;
+                right: 16px;
+                width: 52px;
+                height: 52px;
+            }
+        }
+
+        /* ===== AI CHAT WIDGET ===== */
+        .chat-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(10, 31, 68, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e8c547;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(10, 31, 68, 0.5);
+        }
+
+        .chat-toggle.active .chat-icon { display: none; }
+        .chat-toggle.active .close-icon { display: block !important; }
+
+        .chat-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ef4444;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 76px;
+            right: 0;
+            width: 370px;
+            max-width: calc(100vw - 32px);
+            height: 520px;
+            max-height: calc(100vh - 120px);
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(10, 31, 68, 0.25);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(10, 31, 68, 0.08);
+        }
+
+        .chat-window.open {
+            display: flex;
+            animation: chatSlideUp 0.3s ease;
+        }
+
+        @keyframes chatSlideUp {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            color: white;
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(90deg, #c9a227, #e8c547);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: #0a1f44;
+        }
+
+        .chat-header h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .chat-status {
+            font-size: 11px;
+            color: #4ade80;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 26px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 4px;
+        }
+
+        .chat-close:hover { color: white; }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            background: #f5f8ff;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-msg {
+            display: flex;
+            max-width: 85%;
+        }
+
+        .chat-msg.bot { align-self: flex-start; }
+        .chat-msg.user { align-self: flex-end; }
+
+        .msg-bubble {
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 13.5px;
+            line-height: 1.55;
+            word-wrap: break-word;
+        }
+
+        .chat-msg.bot .msg-bubble {
+            background: white;
+            color: #1a1a2e;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(10,31,68,0.06);
+        }
+
+        .chat-msg.user .msg-bubble {
+            background: linear-gradient(135deg, #0a1f44, #1a3a6e);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-msg.typing .msg-bubble {
+            padding: 14px 20px;
+        }
+
+        .typing-dots span {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #94a3b8;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingBounce 1.2s infinite;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+
+        .chat-quick {
+            display: flex;
+            gap: 6px;
+            padding: 8px 12px;
+            overflow-x: auto;
+            background: white;
+            border-top: 1px solid #eef1f6;
+            flex-shrink: 0;
+        }
+
+        .chat-quick button {
+            flex-shrink: 0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1.5px solid #e0e6f0;
+            background: #f5f8ff;
+            font-size: 12px;
+            font-family: inherit;
+            color: #0a1f44;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .chat-quick button:hover {
+            border-color: #c9a227;
+            background: #fef9e7;
+            color: #92400e;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 8px;
+            padding: 12px 14px;
+            background: white;
+            border-top: 1px solid #eef1f6;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1.5px solid #e0e6f0;
+            border-radius: 25px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            background: #f5f8ff;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input-area input:focus {
+            border-color: #c9a227;
+            background: white;
+        }
+
+        .chat-input-area button {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #c9a227, #e8c547);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a1f44;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .chat-input-area button:hover {
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 480px) {
+            .chat-widget {
+                bottom: 16px;
+                right: 16px;
+            }
+            .chat-window {
+                width: calc(100vw - 32px);
+                height: calc(100vh - 100px);
+                bottom: 70px;
+            }
+        }
+    </style>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // FAQ toggle
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        }
+
+        // UPI — Admin Settings se (localStorage) ya default
+        function getUpiId() {
+            return localStorage.getItem('adh_upi_id') || '7543811796@paytm';
+        }
+        function getUpiName() {
+            return localStorage.getItem('adh_upi_name') || 'Aman Digital Hub';
+        }
+
+        let pendingPay = { amount: 0, packageName: '' };
+
+        function openPayModal(amount, packageName) {
+            pendingPay = { amount: amount, packageName: packageName };
+            document.getElementById('payPackageName').textContent = packageName;
+            document.getElementById('payPackageAmount').textContent = '₹' + amount.toLocaleString('en-IN');
+            document.getElementById('payModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePayModal() {
+            document.getElementById('payModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.getElementById('payModal').addEventListener('click', function(e) {
+            if (e.target === this) closePayModal();
+        });
+
+        function submitPayDetails(e) {
+            e.preventDefault();
+            const name = document.getElementById('payName').value.trim();
+            const phone = document.getElementById('payPhone').value.trim();
+            const email = document.getElementById('payEmail').value.trim();
+            const city = document.getElementById('payCity').value.trim();
+            const business = document.getElementById('payBusiness').value.trim();
+            const requirements = document.getElementById('payRequirements').value.trim();
+
+            if (!name || !phone || !email) {
+                alert('Please fill Name, Phone and Email.');
+                return;
+            }
+
+            // Save order/lead to localStorage for Admin Panel
+            const order = {
+                id: Date.now().toString(),
+                name: name,
+                phone: phone,
+                email: email,
+                city: city,
+                business: business,
+                requirements: requirements,
+                package: pendingPay.packageName,
+                amount: pendingPay.amount,
+                date: new Date().toISOString(),
+                status: 'payment_initiated',
+                read: false
+            };
+            let orders = JSON.parse(localStorage.getItem('adh_orders') || '[]');
+            orders.push(order);
+            localStorage.setItem('adh_orders', JSON.stringify(orders));
+
+            // Also save as inquiry
+            let inquiries = JSON.parse(localStorage.getItem('adh_inquiries') || '[]');
+            inquiries.push({
+                id: order.id,
+                name: name,
+                email: email,
+                phone: phone,
+                service: pendingPay.packageName + ' (₹' + pendingPay.amount + ')',
+                message: 'Payment initiated.\nCity: ' + (city || '—') + '\nBusiness: ' + (business || '—') + '\nRequirements: ' + (requirements || '—'),
+                date: order.date,
+                read: false
+            });
+            localStorage.setItem('adh_inquiries', JSON.stringify(inquiries));
+
+            closePayModal();
+
+            // Open UPI payment — Google Pay / PhonePe / Paytm
+            const note = encodeURIComponent(pendingPay.packageName + ' - ' + name);
+            const upiUrl = `upi://pay?pa=${encodeURIComponent(getUpiId())}&pn=${encodeURIComponent(getUpiName())}&am=${pendingPay.amount}&cu=INR&tn=${note}`;
+            window.location.href = upiUrl;
+
+            setTimeout(function() {
+                const waMsg = encodeURIComponent(
+                    `Hi, I filled payment details for ${pendingPay.packageName} (₹${pendingPay.amount}).\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nPlease confirm.`
+                );
+                if (confirm('Did the payment app open? If not, chat on WhatsApp for UPI / QR details.')) {
+                    window.open('https://wa.me/917543811796?text=' + waMsg, '_blank');
+                }
+            }, 2500);
+        }
+
+        // Form handler - saves to localStorage (for Admin Panel) + opens email
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const name = form.name.value;
+            const email = form.email.value;
+            const phone = form.phone.value;
+            const service = form.service.value;
+            const message = form.message.value;
+
+            // Save inquiry to localStorage for Admin Panel
+            const inquiry = {
+                id: Date.now().toString(),
+                name: name,
+                email: email,
+                phone: phone,
+                service: service,
+                message: message,
+                date: new Date().toISOString(),
+                read: false
+            };
+            
+            let inquiries = JSON.parse(localStorage.getItem('adh_inquiries') || '[]');
+            inquiries.push(inquiry);
+            localStorage.setItem('adh_inquiries', JSON.stringify(inquiries));
+
+            // Also open email client
+            const subject = encodeURIComponent('New Inquiry from Aman Digital Hub Website');
+            const body = encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}`
+            );
+            window.location.href = `mailto:ansarimadaman22@gmail.com?subject=${subject}&body=${body}`;
+
+            // Show success feedback
+            const btn = form.querySelector('.form-submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Message Sent! ✓';
+            btn.style.opacity = '0.8';
+            form.reset();
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.opacity = '1';
+            }, 2500);
+        }
+
+        // ===== AI CHATBOT =====
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatBadge = document.getElementById('chatBadge');
+
+        let currentChatId = sessionStorage.getItem('adh_chat_id') || null;
+        let chatHistory = [];
+
+        // Open/Close chat
+        chatToggle.addEventListener('click', () => {
+            const isOpen = chatWindow.classList.toggle('open');
+            chatToggle.classList.toggle('active', isOpen);
+            if (isOpen) {
+                chatBadge.style.display = 'none';
+                chatInput.focus();
+                if (!currentChatId) {
+                    currentChatId = 'chat_' + Date.now();
+                    sessionStorage.setItem('adh_chat_id', currentChatId);
+                    // Save initial bot message
+                    saveChatMessage('bot', 'Namaste! Main Aman Digital Hub ka AI Assistant hoon. Kya madad chahiye?');
+                }
+            }
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('open');
+            chatToggle.classList.remove('active');
+        });
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendQuick(text) {
+            chatInput.value = text;
+            sendMessage();
+        }
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            addMessage('user', text);
+            chatInput.value = '';
+            saveChatMessage('user', text);
+
+            // Show typing
+            showTyping();
+
+            setTimeout(() => {
+                hideTyping();
+                const reply = getAIResponse(text);
+                addMessage('bot', reply);
+                saveChatMessage('bot', reply);
+            }, 800 + Math.random() * 700);
+        }
+
+        function addMessage(type, text) {
+            const div = document.createElement('div');
+            div.className = 'chat-msg ' + type;
+            div.innerHTML = `<div class="msg-bubble">${text}</div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.className = 'chat-msg bot typing';
+            div.id = 'typingIndicator';
+            div.innerHTML = `<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTyping() {
+            const el = document.getElementById('typingIndicator');
+            if (el) el.remove();
+        }
+
+        function saveChatMessage(role, text) {
+            if (!currentChatId) {
+                currentChatId = 'chat_' + Date.now();
+                sessionStorage.setItem('adh_chat_id', currentChatId);
+            }
+
+            let chats = JSON.parse(localStorage.getItem('adh_chats') || '[]');
+            let chat = chats.find(c => c.id === currentChatId);
+
+            if (!chat) {
+                chat = {
+                    id: currentChatId,
+                    started: new Date().toISOString(),
+                    lastUpdate: new Date().toISOString(),
+                    messages: [],
+                    read: false
+                };
+                chats.push(chat);
+            }
+
+            chat.messages.push({
+                role: role,
+                text: text,
+                time: new Date().toISOString()
+            });
+            chat.lastUpdate = new Date().toISOString();
+            if (role === 'user') chat.read = false;
+
+            localStorage.setItem('adh_chats', JSON.stringify(chats));
+        }
+
+        // Improved AI Response Engine
+        function getAIResponse(msg) {
+            const m = msg.toLowerCase().trim().replace(/[?!.,]/g, ' ');
+
+            // WhatsApp intent
+            if (/whatsapp|wa\b|message karo|msg karo|chat karo|direct message/.test(m)) {
+                return "Bilkul! WhatsApp pe baat karne ke liye yeh button dabao 👇<br><br><a href='https://wa.me/917543811796?text=Hi%2C%20I%20want%20to%20discuss%20a%20project' target='_blank' style='display:inline-block;background:#25D366;color:#fff;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:600;margin-top:6px;'>💬 WhatsApp pe Message Karein</a>";
+            }
+
+            // Instagram
+            if (/instagram|insta|ig\b/.test(m)) {
+                return "Hamara Instagram:<br><br>📸 <strong>@md_aman._786</strong><br><br><a href='https://instagram.com/md_aman._786' target='_blank' style='display:inline-block;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:600;margin-top:6px;'>Instagram pe Follow Karein</a>";
+            }
+
+            // Greetings
+            if (/^(hi+|hii+|hello|hey+|namaste|namaskar|salam|assalam|good\s*(morning|evening|afternoon)|hola)/.test(m) || m === 'h' || m === 'he') {
+                return "Namaste! 🙏<br><br>Main <strong>Aman Digital Hub</strong> ka AI Assistant hoon.<br><br>Main aapki help kar sakta hoon:<br>• Website / App banwana<br>• Pricing janna<br>• Services dekhna<br>• Direct WhatsApp pe baat karna<br><br>Bataiye, kya chahiye?";
+            }
+
+            // Services overview
+            if (/\b(service|services|kya\s*(banate|karte|dete|offer)|what\s*(do\s*you|services)|offer|kaam\s*kya)\b/.test(m)) {
+                return "Hum yeh services dete hain 👇<br><br>🌐 <strong>Website Development</strong><br>Business, Portfolio, E-commerce, Landing pages<br><br>📱 <strong>Mobile App Development</strong><br>Android apps & Custom mobile solutions<br><br>💻 <strong>Web App Development</strong><br>Dashboards, CRM, Booking systems, Custom portals<br><br>Kaunsi service ke baare mein jaanna hai?";
+            }
+
+            // Website specific
+            if (/\b(website|web\s*site|site\s*ban|landing\s*page|portfolio\s*site|ecommerce|e-commerce|online\s*store)\b/.test(m)) {
+                return "Website Development 🌐<br><br>Hum banate hain:<br>• Business / Company websites<br>• Portfolio websites<br>• E-commerce / Online stores<br>• Landing pages<br>• Blog websites<br><br>✅ Fully Responsive (Mobile + Desktop)<br>✅ Fast & SEO Friendly<br>✅ Modern Design<br><br>Aapko kis type ki website chahiye? Ya pricing jaanna hai?";
+            }
+
+            // Mobile App
+            if (/\b(mobile\s*app|android|ios|app\s*ban|application|play\s*store)\b/.test(m)) {
+                return "Mobile App Development 📱<br><br>• Android Native Apps<br>• Cross-platform Apps (Flutter)<br>• Business / Utility Apps<br>• Custom Mobile Solutions<br><br>App ka idea kya hai? Batao — main guide karunga aur rough estimate de sakta hoon.";
+            }
+
+            // Web App
+            if (/\b(web\s*app|webapp|saas|dashboard|crm|erp|admin\s*panel|portal|booking\s*system)\b/.test(m)) {
+                return "Web App Development 💻<br><br>Custom solutions:<br>• Business Dashboards<br>• CRM / ERP systems<br>• Online Booking systems<br>• Client Portals<br>• SaaS applications<br><br>Aapka use-case / idea kya hai? Detail batao.";
+            }
+
+            // Pricing
+            if (/\b(price|pricing|cost|kitna|rate|budget|charges|fee|paisa|rupee|rs\.?|kitne\s*(rupees|paise|mein)|mehnga|sasta|affordable)\b/.test(m)) {
+                return "Hamare packages 👇<br><br>• <strong>Starter Website</strong> → ₹4,999<br>• <strong>Business Website</strong> → ₹8,999<br>• <strong>Business Pro</strong> → ₹13,999<br>• <strong>E-Commerce Store</strong> → ₹19,999<br>• <strong>Mobile App</strong> → ₹28,999<br>• <strong>Custom Web App</strong> → ₹34,999<br><br>Pay se pehle aapka Name, Phone, Email maanga jayega. Phir Google Pay / PhonePe / Paytm khul jayega.<br><br><a href='#pricing' style='display:inline-block;background:linear-gradient(90deg,#c9a227,#e8c547);color:#0a1f44;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;'>View Pricing</a>";
+            }
+
+            // Contact / Phone / Email
+            if (/\b(contact|phone|number|email|call|mobile\s*no|address|location|kahan|where|reach)\b/.test(m)) {
+                return "Contact Details 📞<br><br>📱 <strong>+91 7543811796</strong><br>📧 <strong>ansarimadaman22@gmail.com</strong><br>📍 Working Remotely – India<br>📸 Instagram: <strong>@md_aman._786</strong><br><br><a href='https://wa.me/917543811796?text=Hi%2C%20I%20want%20to%20discuss%20a%20project' target='_blank' style='display:inline-block;background:#25D366;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;margin:4px 4px 4px 0;'>💬 WhatsApp</a> <a href='https://instagram.com/md_aman._786' target='_blank' style='display:inline-block;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743);color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;margin:4px 0;'>📸 Instagram</a>";
+            }
+
+            // About / Founder
+            if (/\b(who|about|founder|aman|company|kaun|owner|adh|digital\s*hub)\b/.test(m)) {
+                return "Aman Digital Hub ke founder hain <strong>Md Aman</strong> — Web & App Developer.<br><br>Hum remotely India se kaam karte hain aur clients ko professional digital solutions dete hain.<br><br><em>\"Your Digital Partner for a Smarter Tomorrow\"</em><br><br>Instagram: <a href='https://instagram.com/md_aman._786' target='_blank' style='color:#c9a227;'>@md_aman._786</a>";
+            }
+
+            // Start project / Hire / Order
+            if (/\b(start|project|hire|banwa|banwana|order|kaam\s*(chahiye|karwana)|need|want|interested|quote|estimate|enquiry|inquiry)\b/.test(m)) {
+                return "Bahut badhiya! 🚀<br><br>Project start karne ke liye best option:<br><br>1️⃣ WhatsApp pe message karo (fastest)<br>2️⃣ Contact form fill karo<br>3️⃣ Call karo<br><br>Hum discussion karke quote denge, phir kaam start.<br><br><a href='https://wa.me/917543811796?text=Hi%2C%20I%20want%20to%20start%20a%20project' target='_blank' style='display:inline-block;background:#25D366;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;'>💬 WhatsApp pe Project Discuss Karein</a>";
+            }
+
+            // Time / Duration
+            if (/\b(time|kitne\s*din|duration|kab\s*tak|delivery|kitna\s*time|deadline|jaldi|urgent)\b/.test(m)) {
+                return "Delivery time project pe depend karta hai:<br><br>• Simple Website → 7–15 days<br>• Business Website → 15–30 days<br>• Mobile App → 30–60 days<br>• Complex Web App → Project based<br><br>Urgent project hai to batao — priority de sakte hain. WhatsApp pe details share karo!";
+            }
+
+            // Technology
+            if (/\b(tech|technology|stack|react|html|css|php|laravel|node|flutter|javascript|python|language|framework)\b/.test(m)) {
+                return "Hum modern technologies use karte hain:<br><br>• <strong>Frontend:</strong> HTML, CSS, JavaScript, React<br>• <strong>Backend:</strong> Node.js, PHP, Laravel<br>• <strong>Mobile:</strong> Android, Flutter<br>• <strong>Database:</strong> MySQL, MongoDB, Firebase<br><br>Project ke hisaab se best tech stack choose karte hain.";
+            }
+
+            // Portfolio / Work samples
+            if (/\b(portfolio|work|sample|example|demo|previous|pehle\s*kaam)\b/.test(m)) {
+                return "Portfolio / previous work ke liye best hai WhatsApp pe contact karna — wahan samples share kar denge.<br><br><a href='https://wa.me/917543811796?text=Hi%2C%20please%20share%20your%20portfolio' target='_blank' style='display:inline-block;background:#25D366;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;'>💬 Portfolio Maangein</a>";
+            }
+
+            // Thank you / OK
+            if (/\b(thank|thanks|dhanyavad|shukriya|ok+|okay|acha|theek|sahi|great|nice|good)\b/.test(m)) {
+                return "Welcome! 😊<br><br>Koi aur sawal ho to poochho. Ya seedha project discuss karna ho to WhatsApp pe aa jao:<br><br><a href='https://wa.me/917543811796?text=Hi' target='_blank' style='display:inline-block;background:#25D366;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;'>💬 WhatsApp</a>";
+            }
+
+            // Bye
+            if (/\b(bye|goodbye|alvida|see\s*you|chalta|nikalta|baad\s*mein)\b/.test(m)) {
+                return "Dhanyavad! 🙏<br><br>Phir milte hain.<br><strong>Aman Digital Hub</strong> — Let's build your ideas into reality!<br><br>WhatsApp: +91 7543811796";
+            }
+
+            // Help
+            if (/\b(help|madad|assist|guide|kaise)\b/.test(m)) {
+                return "Main yeh help kar sakta hoon 👇<br><br>• Services ki list<br>• Pricing estimate<br>• Contact / WhatsApp<br>• Project start karna<br>• Technology stack<br><br>Ya seedha type karo jo chahiye. Example: <em>\"Website banwani hai\"</em> ya <em>\"Pricing batao\"</em>";
+            }
+
+            // Default - smarter fallback
+            return "Samajh gaya! Aap shayad yeh jaanna chahte ho:<br><br>• <strong>Services</strong> – Website, App, Web App<br>• <strong>Pricing</strong> – Approximate cost<br>• <strong>Contact</strong> – Phone / WhatsApp / Instagram<br>• <strong>Project start</strong> – Kaise begin karein<br><br>Inme se kuch poochho, ya seedha WhatsApp pe baat karo 👇<br><br><a href='https://wa.me/917543811796?text=Hi%2C%20I%20need%20help' target='_blank' style='display:inline-block;background:#25D366;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;'>💬 WhatsApp pe Baat Karein</a>";
+        }
+
+        // Admin panel se add kiye clients (photo, name, location) website pe dikhao
+        (function injectAdminClients() {
+            try {
+                const clients = JSON.parse(localStorage.getItem('adh_clients') || '[]');
+                if (!clients.length) return;
+                const grid = document.querySelector('.testimonials-grid');
+                if (!grid) return;
+                clients.forEach(function(c) {
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card reveal';
+                    const photo = c.photo
+                        ? '<img src="' + c.photo + '" alt="' + (c.name || '') + '">'
+                        : (c.name || '?').charAt(0);
+                    card.innerHTML =
+                        '<div class="testimonial-stars">★★★★★</div>' +
+                        '<p>"' + (c.review || (c.project ? (c.project + ' banwaya. Bahut accha experience.') : 'Aman Digital Hub se kaam karwaya. Professional service.')) + '"</p>' +
+                        '<div class="testimonial-author"><div class="testimonial-avatar">' + photo + '</div><div><h4>' + (c.name || '') + '</h4><span>' + (c.project || 'Client') + ' · ' + (c.location || '') + '</span></div></div>';
+                    grid.insertBefore(card, grid.firstChild);
+                });
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>
